@@ -6,16 +6,20 @@ import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
 import {YummlyServiceClient} from './services/yummly.service.client';
 import { HomeComponent } from './home/home.component';
+import {routing} from './app.routing';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    HomeComponent
+    HomeComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
   providers: [
     YummlyServiceClient
