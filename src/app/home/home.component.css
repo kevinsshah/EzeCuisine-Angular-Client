@@ -5,3 +5,11 @@
 .list-group.wbdv-project {
   margin-top: 15px;
 }
+
+.wbdv-pagination-button {
+  margin: 15px;
+}
+
+.wbdv-search-button {
+  margin-left: 5px;
+}

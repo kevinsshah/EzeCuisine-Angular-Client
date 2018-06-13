@@ -1,19 +1,15 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="input-group">
-        <input type="text"
-               class="form-control"
-               [(ngModel)]="searchInput"
-               placeholder="Search for meals"
-               (keyup.enter)="search(searchInput)"/>
-        <button type="button"
-                (click)="search(searchInput)"
-                class="btn btn-primary">
-          <span class="fa fa-search"></span>
-        </button>
-      </div>
-    </div>
+  <div class="input-group">
+    <input type="text"
+           class="form-control"
+           [(ngModel)]="searchInput"
+           placeholder="Search for meals"
+           (keyup.enter)="search(searchInput, 1)"/>
+    <button type="button"
+            (click)="search(searchInput, 1)"
+            class="btn btn-primary wbdv-search-button">
+      <span class="fa fa-search"></span>
+    </button>
   </div>
 
   <div>
@@ -23,6 +19,23 @@
         {{result['recipeName']}}
       </li>
     </ul>
-    <h2>{{results.length}}</h2>
   </div>
+
+  <div style="text-align: center"
+       *ngIf="results.length > 0">
+    <button type="button"
+            (click)="search(searchInput, currentPage - 1)"
+            [ngClass]="{'disabled':currentPage == firstPage}"
+            class="btn btn-primary wbdv-pagination-button">
+      Previous
+    </button>
+    {{currentPage}}
+    <button type="button"
+            (click)="search(searchInput, currentPage + 1)"
+            [ngClass]="{'disabled':currentPage == lastPage}"
+            class="btn btn-primary wbdv-pagination-button">
+      Next
+    </button>
+  </div>
+
 </div>
