@@ -1,18 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="input-group"
-           id="adv-search">
+      <div class="input-group">
         <input type="text"
                class="form-control"
                [(ngModel)]="searchInput"
-               placeholder="Search for meals"/>
+               placeholder="Search for meals"
+               (keyup.enter)="search(searchInput)"/>
         <button type="button"
                 (click)="search(searchInput)"
                 class="btn btn-primary">
-          <span class="fa fa-search"
-                aria-hidden="true">
-          </span>
+          <span class="fa fa-search"></span>
         </button>
       </div>
     </div>
