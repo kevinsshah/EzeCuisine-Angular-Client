@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {YummlyServiceClient} from '../services/yummly.service.client';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   constructor(private yummlyService: YummlyServiceClient) { }
 
