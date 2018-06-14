@@ -11,6 +11,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import {RecipeServiceClient} from './services/recipe.service.client';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
+import { RegisterComponent } from './register/register.component';
+import {UserServiceClient} from './services/user.service.client';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,9 @@ import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
     HomeComponent,
     SearchBarComponent,
     RecipeDetailsComponent,
+    RegisterComponent,
+    ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,8 @@ import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
   ],
   providers: [
     YummlyServiceClient,
-    RecipeServiceClient
+    RecipeServiceClient,
+    UserServiceClient
   ],
   bootstrap: [AppComponent]
 })
