@@ -4,8 +4,8 @@
   <div class="row">
     <div class="col-6">
       <img alt="Image not available"
-           *ngIf="recipeDetails['images']"
-           src="{{recipeDetails['images'][0]['imageUrlsBySize'][360]}}">
+           *ngIf="recipeDetails['imageUrl'] != ''"
+           src="{{recipeDetails['imageUrl']}}">
     </div>
     <div class="col-6">
       <h1>
@@ -14,8 +14,8 @@
       <h2>Rating: {{recipeDetails['rating']}}</h2>
     </div>
   </div>
-  <ul class="list-group">
-    <li *ngFor="let ingredient of recipeDetails['ingredientLines']"
+  <ul class="list-group wbdv-recipe">
+    <li *ngFor="let ingredient of recipeDetails['ingredients']"
         class="list-group-item">
       {{ingredient}}
     </li>

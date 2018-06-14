@@ -7,6 +7,7 @@
           (click)="navigate(result.id)"
           class="list-group-item">
         <img alt=" "
+             *ngIf="result.smallImageUrls"
              src={{result.smallImageUrls[0]}}>
         {{result['recipeName']}}
       </li>

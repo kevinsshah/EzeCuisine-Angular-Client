@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import {routing} from './app.routing';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import {RecipeServiceClient} from './services/recipe.service.client';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     SearchComponent,
     HomeComponent,
     SearchBarComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     routing
   ],
   providers: [
-    YummlyServiceClient
+    YummlyServiceClient,
+    RecipeServiceClient
   ],
   bootstrap: [AppComponent]
 })

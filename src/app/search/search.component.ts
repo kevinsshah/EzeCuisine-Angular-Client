@@ -39,8 +39,8 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  navigate(recipeId) {
-    this.router.navigate(['search/' + this.searchText + '/' + recipeId]);
+  navigate(yummlyId) {
+    this.router.navigate(['search/' + this.searchText + '/' + yummlyId]);
   }
 
   ngOnInit() {

@@ -7,7 +7,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'search/:searchText', component: SearchComponent},
-  { path: 'search/:searchText/:recipeId', component: RecipeDetailsComponent},
+  { path: 'search/:searchText/:yummlyId', component: RecipeDetailsComponent},
   { path: '**', component: HomeComponent} // last
 ];
 export const routing = RouterModule.forRoot(appRoutes);
