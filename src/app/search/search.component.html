@@ -16,14 +16,14 @@
   <div style="text-align: center"
        *ngIf="results.length > 0">
     <button type="button"
-            (click)="searchMeals(searchText, currentPage - 1)"
+            (click)="searchRecipes(searchText, currentPage - 1)"
             [ngClass]="{'disabled':currentPage == firstPage}"
             class="btn btn-primary wbdv-pagination-button">
       Previous
     </button>
     Page {{currentPage}} of {{lastPage}}
     <button type="button"
-            (click)="searchMeals(searchText, currentPage + 1)"
+            (click)="searchRecipes(searchText, currentPage + 1)"
             [ngClass]="{'disabled':currentPage == lastPage}"
             class="btn btn-primary wbdv-pagination-button">
       Next

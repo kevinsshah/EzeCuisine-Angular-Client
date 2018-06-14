@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) {
     this.route.params.subscribe(params => this.setSearchText(params));
-    this.searchMeals(this.searchText, 1);
+    this.searchRecipes(this.searchText, 1);
   }
 
   searchText = '';
@@ -25,22 +25,22 @@ export class SearchComponent implements OnInit {
 
   setSearchText(params) {
     this.searchText = params['searchText'];
-    this.searchMeals(this.searchText, 1);
+    this.searchRecipes(this.searchText, 1);
   }
 
-  searchMeals(input, pageNumber) {
+  searchRecipes(input, pageNumber) {
     this.currentPage = pageNumber;
     const query = input.replace('%20', '+');
     this.yummlyService
-      .findAllMeals(query, pageNumber)
+      .findAllRecipes(query, pageNumber)
       .then(results => {
         this.lastPage = Math.ceil(results['totalMatchCount'] / 10);
         this.results = results['matches'];
       });
   }
 
-  navigate(mealId) {
-    this.router.navigate(['search/' + this.searchText + '/' + mealId]);
+  navigate(recipeId) {
+    this.router.navigate(['search/' + this.searchText + '/' + recipeId]);
   }
 
   ngOnInit() {

@@ -8,7 +8,7 @@ import {YummlyServiceClient} from './services/yummly.service.client';
 import { HomeComponent } from './home/home.component';
 import {routing} from './app.routing';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { MealDetailsComponent } from './meal-details/meal-details.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { MealDetailsComponent } from './meal-details/meal-details.component';
     SearchComponent,
     HomeComponent,
     SearchBarComponent,
-    MealDetailsComponent
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,
