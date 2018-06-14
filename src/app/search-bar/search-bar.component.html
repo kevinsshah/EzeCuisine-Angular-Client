@@ -3,12 +3,12 @@
     <input type="text"
            class="form-control"
            [(ngModel)]="searchText"
+           (keyup.enter)="navigate(searchText)"
            placeholder="Search for meals"/>
-    <a routerLink="/search/{{searchText}}">
-      <button type="button"
-              class="btn btn-primary wbdv-search-button">
-        <span class="fa fa-search"></span>
-      </button>
-    </a>
+    <button type="button"
+            (click)="navigate(searchText)"
+            class="btn btn-primary wbdv-search-button">
+      <span class="fa fa-search"></span>
+    </button>
   </div>
 </div>

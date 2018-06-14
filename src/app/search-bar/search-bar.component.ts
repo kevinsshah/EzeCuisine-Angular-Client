@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,13 +8,18 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.searchText = params['searchText']);
   }
 
   searchText = '';
 
   ngOnInit() {
+  }
+
+  navigate(searchText) {
+    this.router.navigate(['search/' + searchText]);
   }
 
 }
