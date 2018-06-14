@@ -26,8 +26,7 @@ export class UserServiceClient {
     return fetch(this.USER_LOGOUT_URL, {
       method: 'post',
       credentials: 'include'
-    })
-      .then(response => response.json());
+    });
   }
 
   createUser(username, password) {

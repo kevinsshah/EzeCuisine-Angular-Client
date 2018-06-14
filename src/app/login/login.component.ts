@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
   username;
   password;
   login(username, password) {
-    this.userService.login(username, password)
+    this.userService
+      .login(username, password)
       .then(() => this.router.navigate(['profile']));
   }
 
