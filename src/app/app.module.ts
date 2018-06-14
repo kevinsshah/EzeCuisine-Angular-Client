@@ -10,6 +10,7 @@ import {routing} from './app.routing';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import {RecipeServiceClient} from './services/recipe.service.client';
+import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import {RecipeServiceClient} from './services/recipe.service.client';
   imports: [
     BrowserModule,
     FormsModule,
-    routing
+    routing,
+    CarouselModule,
+    WavesModule
   ],
   providers: [
     YummlyServiceClient,

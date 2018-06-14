@@ -1,3 +1,7 @@
-.container {
-  padding-top: 50px;
+.wbdv-top-bottom-container {
+  margin-bottom: 50px;
+}
+
+.view {
+  filter: brightness(70%);
 }

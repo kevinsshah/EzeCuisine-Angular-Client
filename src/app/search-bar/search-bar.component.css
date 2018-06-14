@@ -1,7 +1,12 @@
 .container {
-  padding-top: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .wbdv-search-button {
   margin-left: 5px;
+}
+
+.paddingDiv:focus {
+  outline: 0;
 }

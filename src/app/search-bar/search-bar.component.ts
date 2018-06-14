@@ -22,4 +22,8 @@ export class SearchBarComponent implements OnInit {
     this.router.navigate(['search/' + searchText]);
   }
 
+  goHome() {
+    this.router.navigate(['home']);
+  }
+
 }
