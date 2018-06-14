@@ -6,6 +6,8 @@
       <li *ngFor="let result of results"
           (click)="navigate(result.id)"
           class="list-group-item">
+        <img alt=" "
+             src={{result.smallImageUrls[0]}}>
         {{result['recipeName']}}
       </li>
     </ul>

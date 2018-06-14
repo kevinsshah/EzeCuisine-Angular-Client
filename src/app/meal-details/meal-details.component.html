@@ -1,13 +1,23 @@
 <app-search-bar></app-search-bar>
 
 <div class="container">
-  <h1>
-    {{mealDetails['name']}}
-  </h1>
+  <div class="row">
+    <div class="col-6">
+      <img alt="Image not available"
+           *ngIf="mealDetails['images']"
+           src="{{mealDetails['images'][0]['imageUrlsBySize'][360]}}">
+    </div>
+    <div class="col-6">
+      <h1>
+        {{mealDetails['name']}}
+      </h1>
+      <h2>Rating: {{mealDetails['rating']}}</h2>
+    </div>
+  </div>
   <ul class="list-group">
     <li *ngFor="let ingredient of mealDetails['ingredientLines']"
         class="list-group-item">
-        {{ingredient}}
+      {{ingredient}}
     </li>
   </ul>
 </div>
