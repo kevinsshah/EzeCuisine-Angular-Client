@@ -22,6 +22,14 @@ export class SearchBarComponent implements OnInit {
     this.router.navigate(['search/' + searchText]);
   }
 
+  navigateToLogin() {
+    this.router.navigate(['login']);
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['register']);
+  }
+
   goHome() {
     this.router.navigate(['home']);
   }

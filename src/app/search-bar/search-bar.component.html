@@ -19,8 +19,15 @@
       </div>
   </div>
   <div class="col-2 container">
-    <button class="btn btn-primary">
-      Login/Register
-    </button>
+    <div class="row">
+      <button (click)="navigateToLogin()"
+              class="btn btn-primary">
+        Login
+      </button>
+      <button (click)="navigateToRegister()"
+              class="btn btn-primary">
+        Register
+      </button>
+    </div>
   </div>
 </div>
