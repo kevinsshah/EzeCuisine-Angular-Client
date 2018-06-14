@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {YummlyServiceClient} from '../services/yummly.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,9 +11,10 @@ import {ActivatedRoute} from '@angular/router';
 export class SearchComponent implements OnInit {
 
   constructor(private yummlyService: YummlyServiceClient,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.route.params.subscribe(params => this.setSearchText(params));
-    this.search(this.searchText, 1);
+    this.searchMeals(this.searchText, 1);
   }
 
   searchText = '';
@@ -24,18 +25,22 @@ export class SearchComponent implements OnInit {
 
   setSearchText(params) {
     this.searchText = params['searchText'];
-    this.search(this.searchText, 1);
+    this.searchMeals(this.searchText, 1);
   }
 
-  search(input, pageNumber) {
+  searchMeals(input, pageNumber) {
     this.currentPage = pageNumber;
     const query = input.replace('%20', '+');
     this.yummlyService
-      .findAllResults(query, pageNumber)
+      .findAllMeals(query, pageNumber)
       .then(results => {
         this.lastPage = Math.ceil(results['totalMatchCount'] / 10);
         this.results = results['matches'];
       });
+  }
+
+  navigate(mealId) {
+    this.router.navigate(['search/' + this.searchText + '/' + mealId]);
   }
 
   ngOnInit() {

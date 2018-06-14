@@ -1,0 +1,13 @@
+<app-search-bar></app-search-bar>
+
+<div class="container">
+  <h1>
+    {{mealDetails['name']}}
+  </h1>
+  <ul class="list-group">
+    <li *ngFor="let ingredient of mealDetails['ingredientLines']"
+        class="list-group-item">
+        {{ingredient}}
+    </li>
+  </ul>
+</div>

@@ -4,6 +4,7 @@
   <div>
     <ul class="list-group wbdv-project">
       <li *ngFor="let result of results"
+          (click)="navigate(result.id)"
           class="list-group-item">
         {{result['recipeName']}}
       </li>
@@ -13,14 +14,14 @@
   <div style="text-align: center"
        *ngIf="results.length > 0">
     <button type="button"
-            (click)="search(searchText, currentPage - 1)"
+            (click)="searchMeals(searchText, currentPage - 1)"
             [ngClass]="{'disabled':currentPage == firstPage}"
             class="btn btn-primary wbdv-pagination-button">
       Previous
     </button>
-    {{currentPage}}
+    Page {{currentPage}} of {{lastPage}}
     <button type="button"
-            (click)="search(searchText, currentPage + 1)"
+            (click)="searchMeals(searchText, currentPage + 1)"
             [ngClass]="{'disabled':currentPage == lastPage}"
             class="btn btn-primary wbdv-pagination-button">
       Next
