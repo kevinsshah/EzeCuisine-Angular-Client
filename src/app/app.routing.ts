@@ -4,12 +4,14 @@ import {SearchComponent} from './search/search.component';
 import {RecipeDetailsComponent} from './recipe-details/recipe-details.component';
 import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
+import {LoginComponent} from './login/login.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'search/:searchText', component: SearchComponent},
   { path: 'search/:searchText/:yummlyId', component: RecipeDetailsComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'profile', component: ProfileComponent},
   { path: '**', component: HomeComponent} // last
