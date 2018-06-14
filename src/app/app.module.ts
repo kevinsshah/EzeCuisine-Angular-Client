@@ -1,20 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
+import {AppComponent} from './app.component';
+import {SearchComponent} from './search/search.component';
 import {FormsModule} from '@angular/forms';
 import {YummlyServiceClient} from './services/yummly.service.client';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 import {routing} from './app.routing';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import {SearchBarComponent} from './search-bar/search-bar.component';
+import {RecipeDetailsComponent} from './recipe-details/recipe-details.component';
 import {RecipeServiceClient} from './services/recipe.service.client';
-import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
-import { RegisterComponent } from './register/register.component';
+import {CarouselModule, WavesModule} from 'angular-bootstrap-md';
+import {RegisterComponent} from './register/register.component';
 import {UserServiceClient} from './services/user.service.client';
-import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
+import {ProfileComponent} from './profile/profile.component';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,4 +41,5 @@ import { LoginComponent } from './login/login.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
