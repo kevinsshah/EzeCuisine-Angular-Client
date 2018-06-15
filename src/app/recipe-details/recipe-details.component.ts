@@ -18,11 +18,20 @@ export class RecipeDetailsComponent implements OnInit {
 
   recipeDetails = {};
   yummlyId = '';
-  recipe = {};
+  recipeId = '';
+  likedUsers = [];
 
   setRecipeId(params) {
     this.yummlyId = params['yummlyId'];
     this.findRecipeById(this.yummlyId);
+
+  }
+
+  loadLikedUsersForRecipe(recipeId) {
+    this
+      .recipeService
+      .findLikedUsersForRecipe(recipeId)
+      .then(users => this.likedUsers = users);
   }
 
   findRecipeById(yummlyId) {
@@ -30,23 +39,33 @@ export class RecipeDetailsComponent implements OnInit {
       .findRecipeById(yummlyId)
       .then(response => {
         if (response['name']) {
-          response['ingredients'] = response['ingredients'].split('\n')
+          response['ingredients'] = response['ingredients'].split('\n');
           this.recipeDetails = response;
+          this.recipeId = response['_id'];
+          // this.loadLikedUsersForRecipe(this.recipeId);
         } else {
           this.yummlyService
             .findRecipeById(yummlyId)
-            .then(result => {
+            .then(result =>
               this.recipeService
                 .createRecipe(result)
-                .then(recipe => {
-                  if (recipe['ingredients']) {
-                    recipe['ingredients'] = recipe['ingredients'].split('\n');
-                    this.recipeDetails = recipe;
-                  }
-                });
-            });
+            )
+            .then(recipe => {
+            if (recipe['ingredients']) {
+              recipe['ingredients'] = recipe['ingredients'].split('\n');
+              this.recipeDetails = recipe;
+              this.recipeId = recipe['_id'];
+              // this.loadLikedUsersForRecipe(this.recipeId);
+            }
+          });
         }
       });
+  }
+
+  like() {
+    this
+      .recipeService
+      .like(this.recipeId);
   }
 
   ngOnInit() {

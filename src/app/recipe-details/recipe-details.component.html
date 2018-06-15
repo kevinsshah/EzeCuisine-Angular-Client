@@ -12,6 +12,7 @@
         {{recipeDetails['name']}}
       </h1>
       <h2>Rating: {{recipeDetails['rating']}}</h2>
+      <h2>{{recipeId}}</h2>
     </div>
   </div>
   <ul class="list-group wbdv-recipe">
@@ -20,4 +21,16 @@
       {{ingredient}}
     </li>
   </ul>
+  <button class="btn btn-primary"
+          (click)="like()">
+    Like
+  </button>
+
+  <input class="form-control"
+         placeholder = "Rating from 1-5"
+         [(ngModel)]="rating">
+  <button (click)=""
+          class="btn btn-success">
+    Rate
+  </button>
 </div>

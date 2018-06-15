@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
+import {RecipeServiceClient} from '../services/recipe.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +11,12 @@ import {Router} from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
+              private recipeService: RecipeServiceClient,
               private router: Router) {
   }
 
   user = {};
+  likedRecipes = [];
 
   logout() {
     this.userService
@@ -25,6 +28,9 @@ export class ProfileComponent implements OnInit {
     this.userService
       .profile()
       .then(user => this.user = user);
+    this.recipeService
+      .findLikedRecipesForUser()
+      .then(recipes => this.likedRecipes = recipes);
   }
 
 }

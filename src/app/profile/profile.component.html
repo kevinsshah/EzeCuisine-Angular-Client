@@ -18,7 +18,12 @@
     Update
   </button>
 
+  <h2>Liked recipes</h2>
+  <ul class="list-group">
+    <li *ngFor="let likedRecipe of likedRecipes" class="list-group-item">
+      {{likedRecipe.recipe.name}}
+    </li>
+  </ul>
   <a (click)="logout()">Logout</a>
   <a routerLink="/home">Home</a>
-
 </div>
