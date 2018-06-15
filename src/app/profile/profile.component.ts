@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
   user = {};
   likedRecipes = [];
+  ratedRecipes = [];
 
   logout() {
     this.userService
@@ -31,6 +32,9 @@ export class ProfileComponent implements OnInit {
     this.recipeService
       .findLikedRecipesForUser()
       .then(recipes => this.likedRecipes = recipes);
+    this.recipeService
+      .findRatedRecipesForUser()
+      .then(recipes => this.ratedRecipes = recipes);
   }
 
 }

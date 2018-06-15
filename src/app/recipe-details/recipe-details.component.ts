@@ -20,6 +20,8 @@ export class RecipeDetailsComponent implements OnInit {
   yummlyId = '';
   recipeId = '';
   likedUsers = [];
+  ratedUsers = [];
+  rating = '';
 
   setRecipeId(params) {
     this.yummlyId = params['yummlyId'];
@@ -34,6 +36,13 @@ export class RecipeDetailsComponent implements OnInit {
       .then(users => this.likedUsers = users);
   }
 
+  loadRatedUsersForRecipe(recipeId) {
+    this
+      .recipeService
+      .findRatedUsersForRecipe(recipeId)
+      .then(users => this.ratedUsers = users);
+  }
+
   findRecipeById(yummlyId) {
     this.recipeService
       .findRecipeById(yummlyId)
@@ -42,7 +51,7 @@ export class RecipeDetailsComponent implements OnInit {
           response['ingredients'] = response['ingredients'].split('\n');
           this.recipeDetails = response;
           this.recipeId = response['_id'];
-          // this.loadLikedUsersForRecipe(this.recipeId);
+          this.loadRatedUsersForRecipe(this.recipeId);
         } else {
           this.yummlyService
             .findRecipeById(yummlyId)
@@ -55,7 +64,7 @@ export class RecipeDetailsComponent implements OnInit {
               recipe['ingredients'] = recipe['ingredients'].split('\n');
               this.recipeDetails = recipe;
               this.recipeId = recipe['_id'];
-              // this.loadLikedUsersForRecipe(this.recipeId);
+              this.loadRatedUsersForRecipe(this.recipeId);
             }
           });
         }
@@ -66,6 +75,12 @@ export class RecipeDetailsComponent implements OnInit {
     this
       .recipeService
       .like(this.recipeId);
+  }
+
+  rate(rating) {
+    this
+      .recipeService
+      .rate(this.recipeId, rating);
   }
 
   ngOnInit() {

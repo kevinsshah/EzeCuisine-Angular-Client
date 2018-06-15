@@ -24,6 +24,14 @@
       {{likedRecipe.recipe.name}}
     </li>
   </ul>
+
+  <h2>Rated recipes</h2>
+  <ul class="list-group">
+    <li *ngFor="let ratedRecipe of ratedRecipes" class="list-group-item">
+      {{ratedRecipe.recipe.name}}
+    </li>
+  </ul>
+
   <a (click)="logout()">Logout</a>
   <a routerLink="/home">Home</a>
 </div>

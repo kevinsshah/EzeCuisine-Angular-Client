@@ -12,7 +12,6 @@
         {{recipeDetails['name']}}
       </h1>
       <h2>Rating: {{recipeDetails['rating']}}</h2>
-      <h2>{{recipeId}}</h2>
     </div>
   </div>
   <ul class="list-group wbdv-recipe">
@@ -29,8 +28,15 @@
   <input class="form-control"
          placeholder = "Rating from 1-5"
          [(ngModel)]="rating">
-  <button (click)=""
+  <button (click)="rate(rating)"
           class="btn btn-success">
     Rate
   </button>
+
+  <ul class="list-group wbdv-recipe">
+    <li *ngFor="let ratedUser of ratedUsers"
+        class="list-group-item">
+      {{ratedUser.user.username}} {{ratedUser.rating}}
+    </li>
+  </ul>
 </div>
