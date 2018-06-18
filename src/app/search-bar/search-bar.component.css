@@ -14,3 +14,11 @@
 .btn {
   margin-left: 5px;
 }
+
+.row {
+  width: 100%;
+}
+
+.form-control.mr-sm-2 {
+  width:40%;
+}
