@@ -3,15 +3,8 @@
   margin-bottom: 50px;
 }
 
-.wbdv-search-button {
-  margin-left: 5px;
-}
 
-.paddingDiv:focus {
-  outline: 0;
-}
-
-.btn {
+.btn.btn-outline-light {
   margin-left: 5px;
 }
 
@@ -19,6 +12,19 @@
   width: 100%;
 }
 
-.form-control.mr-sm-2 {
-  width:40%;
+/*.row.wbdv-navbar {*/
+  /*margin-right: 0px;*/
+/*}*/
+
+
+a.wbdv-username-anchor{
+  color: white;
 }
+
+.col-3.wbdv-login-register {
+  padding-right: 0px;
+}
+.col-11.wbdv-search-input {
+  padding-right: 0px;
+}
+

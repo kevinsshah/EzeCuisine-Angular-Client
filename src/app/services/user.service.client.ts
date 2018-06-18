@@ -50,6 +50,7 @@ export class UserServiceClient {
       {
         credentials: 'include', // include, same-origin, *omit
       })
-      .then(response => response.json());
+      .then(response => response.text())
+      .then(text => text.length ? JSON.parse(text) : {});
   }
 }
