@@ -15,13 +15,23 @@ export class RegisterComponent implements OnInit {
   username;
   password;
   password2;
+  alertPassword = false;
+  alertUsername = false;
+
   register(username, password, password2) {
     this.userService
       .createUser(username, password)
       .then(() => this.router.navigate(['profile']));
   }
 
-  ngOnInit() {
+  removeAlert() {
+    this.alertPassword = false;
   }
 
+  removeUsernameAlert() {
+    this.alertUsername = false;
+  }
+
+  ngOnInit() {
+  }
 }

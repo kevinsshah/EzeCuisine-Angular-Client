@@ -36,16 +36,16 @@
     </button>
   </div>
 
-  <input [(ngModel)]="user.username"
+  <input [(ngModel)]="user['username']"
          placeholder="username"
          class="form-control"/>
-  <input [(ngModel)]="user.firstName"
+  <input [(ngModel)]="user['firstName']"
          placeholder="first name"
          class="form-control"/>
-  <input [(ngModel)]="user.lastName"
+  <input [(ngModel)]="user['lastName']"
          placeholder="lastName"
          class="form-control"/>
-  <input [(ngModel)]="user.email"
+  <input [(ngModel)]="user['email']"
          placeholder="email"
          class="form-control"/>
   <button (click)="update(user)"
