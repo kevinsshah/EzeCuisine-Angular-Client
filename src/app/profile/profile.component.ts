@@ -18,12 +18,22 @@ export class ProfileComponent implements OnInit {
   user = {};
   likedRecipes = [];
   ratedRecipes = [];
+  alertSuccess = false;
 
   logout() {
     this.userService
       .logout()
       .then(() => this.router.navigate(['login']));
   }
+
+  removeAlert() {
+    this.alertSuccess = false;
+  }
+
+  update(user) {
+    console.log(user);
+  }
+
 
   ngOnInit() {
     this.userService
@@ -36,5 +46,4 @@ export class ProfileComponent implements OnInit {
       .findRatedRecipesForUser()
       .then(recipes => this.ratedRecipes = recipes);
   }
-
 }
