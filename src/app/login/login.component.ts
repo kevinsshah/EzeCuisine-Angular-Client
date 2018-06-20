@@ -16,7 +16,14 @@ export class LoginComponent implements OnInit {
   login(username, password) {
     this.userService
       .login(username, password)
-      .then(() => this.router.navigate(['profile']));
+      .then(user => {
+        if (user.username) {
+          this.alertUsername = false;
+          this.router.navigate(['profile']);
+        } else {
+          this.alertUsername = true;
+        }
+      });
   }
 
   removeUsernameAlert() {

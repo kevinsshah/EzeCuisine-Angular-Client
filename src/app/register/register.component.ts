@@ -15,14 +15,10 @@ export class RegisterComponent implements OnInit {
   username;
   password;
   password2;
+  userRole = '';
+
   alertPassword = false;
   alertUsername = false;
-
-  register(username, password, password2) {
-    this.userService
-      .createUser(username, password)
-      .then(() => this.router.navigate(['profile']));
-  }
 
   removeAlert() {
     this.alertPassword = false;
@@ -30,6 +26,30 @@ export class RegisterComponent implements OnInit {
 
   removeUsernameAlert() {
     this.alertUsername = false;
+  }
+
+  checkPasswords(password, password2) {
+    if (password !== password2) {
+      this.alertPassword = true;
+    } else {this.alertPassword = false; }
+  }
+
+  register(username, password, password2) {
+    this.checkPasswords(password, password2);
+    this.alertUsername = false;
+
+    if (this.alertPassword === false) {
+      this.userService
+        .createUser(username, password, this.userRole)
+        .then((user) => {
+          if (user.username) {
+            this.alertUsername = false;
+            this.router.navigate(['profile']);
+          } else {
+            this.alertUsername = true;
+          }
+        });
+    }
   }
 
   ngOnInit() {

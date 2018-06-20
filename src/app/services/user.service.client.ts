@@ -34,10 +34,11 @@ export class UserServiceClient {
     });
   }
 
-  createUser(username, password) {
+  createUser(username, password, userRole) {
     const user = {
       username,
-      password
+      password,
+      role: userRole
     };
 
     return fetch(this.USER_URL, {

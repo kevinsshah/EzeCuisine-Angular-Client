@@ -43,15 +43,29 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-    this.userService
-      .profile()
-      .then(user => this.user = user);
+  loadLikedRecipesForUser() {
     this.likeService
       .findLikedRecipesForUser()
       .then(recipes => this.likedRecipes = recipes);
+  }
+
+  loadRatedRecipesForUser() {
     this.ratingService
       .findRatedRecipesForUser()
       .then(recipes => this.ratedRecipes = recipes);
+  }
+
+  ngOnInit() {
+    this.userService
+      .profile()
+      .then(user => {
+        if (user['username']) {
+          this.user = user;
+          this.loadLikedRecipesForUser();
+          this.loadRatedRecipesForUser();
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
   }
 }

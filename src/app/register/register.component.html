@@ -46,6 +46,13 @@
   <input [(ngModel)]="username"
          placeholder="username"
          class="form-control"/>
+  <select [(ngModel)]="userRole"
+          class="form-control">
+    <option value="" disabled selected>What do you want to be?</option>
+    <option value="Customer">Customer</option>
+    <option value="Chef">Chef</option>
+    <option value="Critic">Critic</option>
+  </select>
   <input [(ngModel)]="password"
          placeholder="password"
          class="form-control"/>

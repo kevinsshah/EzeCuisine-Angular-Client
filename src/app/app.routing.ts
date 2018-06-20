@@ -5,6 +5,7 @@ import {RecipeDetailsComponent} from './recipe-details/recipe-details.component'
 import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
+import {AdminPageComponent} from './admin-page/admin-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'profile', component: ProfileComponent},
+  { path: 'admin', component: AdminPageComponent},
   { path: '**', component: HomeComponent} // last
 ];
 export const routing = RouterModule.forRoot(appRoutes);
