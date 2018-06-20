@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {YummlyServiceClient} from '../services/yummly.service.client';
 import {RecipeServiceClient} from '../services/recipe.service.client';
+import {LikeServiceClient} from '../services/like.service.client';
+import {RatingServiceClient} from '../services/rating.service.client';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,6 +14,8 @@ export class RecipeDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private yummlyService: YummlyServiceClient,
+              private likeService: LikeServiceClient,
+              private ratingService: RatingServiceClient,
               private recipeService: RecipeServiceClient) {
     this.route.params.subscribe(params => this.setRecipeId(params));
   }
@@ -23,6 +27,18 @@ export class RecipeDetailsComponent implements OnInit {
   ratedUsers = [];
   rating = '';
 
+  like() {
+    this
+      .likeService
+      .like(this.recipeId);
+  }
+
+  rate(rating) {
+    this
+      .ratingService
+      .rate(this.recipeId, rating);
+  }
+
   setRecipeId(params) {
     this.yummlyId = params['yummlyId'];
     this.findRecipeById(this.yummlyId);
@@ -31,14 +47,14 @@ export class RecipeDetailsComponent implements OnInit {
 
   loadLikedUsersForRecipe(recipeId) {
     this
-      .recipeService
+      .likeService
       .findLikedUsersForRecipe(recipeId)
       .then(users => this.likedUsers = users);
   }
 
   loadRatedUsersForRecipe(recipeId) {
     this
-      .recipeService
+      .ratingService
       .findRatedUsersForRecipe(recipeId)
       .then(users => this.ratedUsers = users);
   }
@@ -69,18 +85,6 @@ export class RecipeDetailsComponent implements OnInit {
           });
         }
       });
-  }
-
-  like() {
-    this
-      .recipeService
-      .like(this.recipeId);
-  }
-
-  rate(rating) {
-    this
-      .recipeService
-      .rate(this.recipeId, rating);
   }
 
   ngOnInit() {

@@ -15,6 +15,8 @@ import {RegisterComponent} from './register/register.component';
 import {UserServiceClient} from './services/user.service.client';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
+import {LikeServiceClient} from './services/like.service.client';
+import {RatingServiceClient} from './services/rating.service.client';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {LoginComponent} from './login/login.component';
   providers: [
     YummlyServiceClient,
     RecipeServiceClient,
-    UserServiceClient
+    UserServiceClient,
+    LikeServiceClient,
+    RatingServiceClient
   ],
   bootstrap: [AppComponent]
 })
