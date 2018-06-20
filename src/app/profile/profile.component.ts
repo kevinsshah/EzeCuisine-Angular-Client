@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {RecipeServiceClient} from '../services/recipe.service.client';
 import {LikeServiceClient} from '../services/like.service.client';
 import {RatingServiceClient} from '../services/rating.service.client';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit {
               private router: Router) {
   }
 
-  user = {};
+  user: User = new User();
   likedRecipes = [];
   ratedRecipes = [];
   alertSuccess = false;
@@ -35,9 +36,12 @@ export class ProfileComponent implements OnInit {
   }
 
   update(user) {
-    console.log(user);
+    this.userService
+      .update(user)
+      .then(() => {
+        this.alertSuccess = true;
+      });
   }
-
 
   ngOnInit() {
     this.userService

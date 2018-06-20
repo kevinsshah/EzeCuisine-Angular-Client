@@ -58,4 +58,15 @@ export class UserServiceClient {
       .then(response => response.text())
       .then(text => text.length ? JSON.parse(text) : {});
   }
+
+  update(user) {
+    return fetch(this.USER_PROFILE_URL, {
+      credentials: 'include',
+      method: 'put',
+      body: JSON.stringify(user),
+      headers: {
+        'content-type' : 'application/json'
+      }
+    }) ;
+  }
 }
