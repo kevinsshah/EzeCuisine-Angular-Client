@@ -1,9 +1,14 @@
 export class UserServiceClient {
 
-  USER_URL = 'http://localhost:4000/api/user';
-  USER_PROFILE_URL = 'http://localhost:4000/api/profile';
-  USER_LOGIN_URL = 'http://localhost:4000/api/login';
-  USER_LOGOUT_URL = 'http://localhost:4000/api/logout';
+  LOCAL_URL = 'http://localhost:4000';
+  REMOTE_URL = 'https://eze-cuisine-nodejs-server.herokuapp.com';
+
+  VARIABLE_URL = this.REMOTE_URL;
+
+  USER_URL = this.VARIABLE_URL + '/api/user';
+  USER_PROFILE_URL = this.VARIABLE_URL + '/api/profile';
+  USER_LOGIN_URL = this.VARIABLE_URL + '/api/login';
+  USER_LOGOUT_URL = this.VARIABLE_URL + '/api/logout';
 
 
   login(username, password) {

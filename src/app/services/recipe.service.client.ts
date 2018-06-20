@@ -1,8 +1,13 @@
 export class RecipeServiceClient {
 
-  RECIPE_URL = 'http://localhost:4000/api/recipe';
-  USER_LIKE_URL = 'http://localhost:4000/api/user/likedRecipe';
-  USER_RATING_URL = 'http://localhost:4000/api/user/ratedRecipe';
+  LOCAL_URL = 'http://localhost:4000';
+  REMOTE_URL = 'https://eze-cuisine-nodejs-server.herokuapp.com';
+
+  VARIABLE_URL = this.REMOTE_URL;
+
+  RECIPE_URL = this.VARIABLE_URL + '/api/recipe';
+  USER_LIKE_URL = this.VARIABLE_URL + '/api/user/likedRecipe';
+  USER_RATING_URL = this.VARIABLE_URL + '/api/user/ratedRecipe';
 
   createRecipe(result) {
     const recipe = {
