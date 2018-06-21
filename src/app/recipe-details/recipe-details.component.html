@@ -20,21 +20,19 @@
     </div>
   </div>
 
-  <div class="RecipeSummary">
-    <div class="wrapper">
-      <div class="recipe-summary-item">
-        <span class="value">{{recipeDetails['ingredients'].length}}</span>
+  <div class="wbdv-recipe-summary">
+      <div class="wbdv-recipe-summary-item">
+        <span class="value">{{ingredientsCount}}</span>
         <label>Ingredients</label>
       </div>
-      <div class="recipe-summary-item nutrition">
+      <div class="wbdv-recipe-summary-item nutrition">
         <span class="value">{{recipeDetails['numberOfServings']}}</span>
         <label>Servings</label>
       </div>
-      <div class="recipe-summary-item ">
-        <span class="value">{{recipeDetails['totalTime'].substr(0,2)}}</span>
-        <label>Minutes</label>
+      <div class="wbdv-recipe-summary-item ">
+        <span class="value">{{totalTime}}</span>
+        <label>{{totalTimeUnit}}</label>
       </div>
-    </div>
   </div>
 
   <ul class="list-group wbdv-recipe">
