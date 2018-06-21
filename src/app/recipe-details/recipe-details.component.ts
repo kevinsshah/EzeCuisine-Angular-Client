@@ -85,8 +85,10 @@ export class RecipeDetailsComponent implements OnInit {
         if (response['name']) {
           response['ingredients'] = response['ingredients'].split('\n');
           this.ingredientsCount = response['ingredients'].length;
-          this.totalTime = response['totalTime'].substr(0, response['totalTime'].indexOf(' '));
-          this.totalTimeUnit = response['totalTime'].substr(response['totalTime'].indexOf(' ') + 1);
+          if (response['totalTime']) {
+            this.totalTime = response['totalTime'].substr(0, response['totalTime'].indexOf(' '));
+            this.totalTimeUnit = response['totalTime'].substr(response['totalTime'].indexOf(' ') + 1);
+          }
           this.recipeDetails = response;
           this.recipeId = response['_id'];
           this.loadRatedUsersForRecipe(this.recipeId);
@@ -100,8 +102,10 @@ export class RecipeDetailsComponent implements OnInit {
             .then(recipe => {
             if (recipe['ingredients']) {
               recipe['ingredients'] = recipe['ingredients'].split('\n');
-              this.totalTime = recipe['totalTime'].substr(0, recipe['totalTime'].indexOf(' '));
-              this.totalTimeUnit = recipe['totalTime'].substr(recipe['totalTime'].indexOf(' ') + 1);
+              if (recipe['totalTime']) {
+                this.totalTime = recipe['totalTime'].substr(0, recipe['totalTime'].indexOf(' '));
+                this.totalTimeUnit = recipe['totalTime'].substr(recipe['totalTime'].indexOf(' ') + 1);
+              }
               this.ingredientsCount = recipe['ingredients'].length;
               this.recipeDetails = recipe;
               this.recipeId = recipe['_id'];

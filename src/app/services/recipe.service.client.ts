@@ -15,7 +15,7 @@ export class RecipeServiceClient {
       yield: result['yield'],
       totalTime: result['totalTime'],
       numberOfServings: result['numberOfServings'],
-      course: result['attributes']['course'][0],
+      course: result['attributes']['course'],
       yummlyRating: result['rating'],
       yummlyId: result['id']
     };
