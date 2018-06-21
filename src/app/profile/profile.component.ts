@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
   followers: Follow[] = [];
   followings: Follow[] = [];
   alertSuccess = false;
+  selection = 'Liked Recipes';
 
   logout() {
     this.userService
@@ -40,6 +41,10 @@ export class ProfileComponent implements OnInit {
 
   removeAlert() {
     this.alertSuccess = false;
+  }
+
+  changeSelection(selection) {
+    this.selection = selection;
   }
 
   update(user) {
