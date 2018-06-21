@@ -19,6 +19,7 @@ import {LikeServiceClient} from './services/like.service.client';
 import {RatingServiceClient} from './services/rating.service.client';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import {FollowServiceClient} from './services/follow.service.client';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RecipeServiceClient,
     UserServiceClient,
     LikeServiceClient,
-    RatingServiceClient
+    RatingServiceClient,
+    FollowServiceClient
   ],
   bootstrap: [AppComponent]
 })
