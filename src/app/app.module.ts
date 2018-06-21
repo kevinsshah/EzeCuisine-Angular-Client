@@ -18,6 +18,7 @@ import {LoginComponent} from './login/login.component';
 import {LikeServiceClient} from './services/like.service.client';
 import {RatingServiceClient} from './services/rating.service.client';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     ProfileComponent,
     LoginComponent,
     AdminPageComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {YummlyServiceClient} from '../services/yummly.service.client';
 import {RecipeServiceClient} from '../services/recipe.service.client';
 import {LikeServiceClient} from '../services/like.service.client';
 import {RatingServiceClient} from '../services/rating.service.client';
+import {User} from '../models/user.model.client';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-recipe-details',
@@ -13,10 +15,12 @@ import {RatingServiceClient} from '../services/rating.service.client';
 export class RecipeDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private yummlyService: YummlyServiceClient,
               private likeService: LikeServiceClient,
               private ratingService: RatingServiceClient,
-              private recipeService: RecipeServiceClient) {
+              private recipeService: RecipeServiceClient,
+              private userService: UserServiceClient) {
     this.route.params.subscribe(params => this.setRecipeId(params));
   }
 
@@ -26,17 +30,27 @@ export class RecipeDetailsComponent implements OnInit {
   likedUsers = [];
   ratedUsers = [];
   rating = '';
+  currentUser: User = new User();
 
   like() {
-    this
-      .likeService
-      .like(this.recipeId);
+    if (this.currentUser['username']) {
+      this
+        .likeService
+        .like(this.recipeId);
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   rate(rating) {
-    this
-      .ratingService
-      .rate(this.recipeId, rating);
+    if (this.currentUser['username']) {
+      this
+        .ratingService
+        .rate(this.recipeId, rating)
+        .then(() => this.loadRatedUsersForRecipe(this.recipeId));
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   setRecipeId(params) {
@@ -88,5 +102,11 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this
+      .userService
+      .profile()
+      .then(response => {
+        this.currentUser = response;
+      });
   }
 }

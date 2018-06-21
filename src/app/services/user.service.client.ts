@@ -70,4 +70,9 @@ export class UserServiceClient {
       }
     }) ;
   }
+
+  profileOfUser(userId) {
+    return fetch(this.USER_PROFILE_URL + userId)
+      .then(response => response.json());
+  }
 }

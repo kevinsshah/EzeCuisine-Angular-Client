@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,7 +17,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchText = '';
-  currentUser = {};
+  currentUser: User = new User();
 
   ngOnInit() {
     this

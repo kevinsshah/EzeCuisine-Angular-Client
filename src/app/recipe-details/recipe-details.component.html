@@ -36,7 +36,8 @@
   <ul class="list-group wbdv-recipe">
     <li *ngFor="let ratedUser of ratedUsers"
         class="list-group-item">
-      {{ratedUser.user.username}} {{ratedUser.rating}}
+      <a routerLink="/profile/{{ratedUser.user.username}}">{{ratedUser.user.username}}</a>
+       {{ratedUser.rating}}
     </li>
   </ul>
 </div>
