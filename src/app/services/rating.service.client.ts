@@ -5,7 +5,8 @@ export class RatingServiceClient {
   VARIABLE_URL = this.LOCAL_URL;
 
   RECIPE_URL = this.VARIABLE_URL + '/api/recipe';
-  USER_RATING_URL = this.VARIABLE_URL + '/api/user/ratedRecipe';
+  CURRENT_USER_RATING_URL = this.VARIABLE_URL + '/api/user/ratedRecipe';
+  USER_RATING_URL = this.VARIABLE_URL + '/api/user/UID/ratedRecipe';
 
   rate(recipeId, rating) {
     const ratingObject = {rating};
@@ -19,10 +20,15 @@ export class RatingServiceClient {
     });
   }
 
-  findRatedRecipesForUser() {
-    return fetch(this.USER_RATING_URL, {
+  findRatedRecipesForCurrentUser() {
+    return fetch(this.CURRENT_USER_RATING_URL, {
       credentials: 'include'
     })
+      .then(response => response.json());
+  }
+
+  findRatedRecipesForUser(userId) {
+    return fetch(this.USER_RATING_URL.replace('UID', userId))
       .then(response => response.json());
   }
 

@@ -47,13 +47,13 @@ export class ProfileComponent implements OnInit {
 
   loadLikedRecipesForUser() {
     this.likeService
-      .findLikedRecipesForUser()
+      .findLikedRecipesForCurrentUser()
       .then(recipes => this.likedRecipes = recipes);
   }
 
   loadRatedRecipesForUser() {
     this.ratingService
-      .findRatedRecipesForUser()
+      .findRatedRecipesForCurrentUser()
       .then(recipes => this.ratedRecipes = recipes);
   }
 

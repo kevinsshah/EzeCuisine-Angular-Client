@@ -71,8 +71,8 @@ export class UserServiceClient {
     }) ;
   }
 
-  profileOfUser(userId) {
-    return fetch(this.USER_PROFILE_URL + userId)
+  profileOfUser(username) {
+    return fetch(this.USER_PROFILE_URL + '/' + username)
       .then(response => response.json());
   }
 }

@@ -1,3 +1,17 @@
-<p>
-  user-profile works!
-</p>
+<h1>
+  {{user.username}}
+</h1>
+
+<h2>Liked recipes</h2>
+<ul class="list-group">
+  <li *ngFor="let likedRecipe of likedRecipes" class="list-group-item">
+    {{likedRecipe.recipe.name}}
+  </li>
+</ul>
+
+<h2>Rated recipes</h2>
+<ul class="list-group">
+  <li *ngFor="let ratedRecipe of ratedRecipes" class="list-group-item">
+    {{ratedRecipe.recipe.name}}
+  </li>
+</ul>

@@ -6,7 +6,8 @@ export class LikeServiceClient {
 
   RECIPE_URL = this.VARIABLE_URL + '/api/recipe';
 
-  USER_LIKE_URL = this.VARIABLE_URL + '/api/user/likedRecipe';
+  CURRENT_USER_LIKE_URL = this.VARIABLE_URL + '/api/user/likedRecipe';
+  USER_LIKE_URL = this.VARIABLE_URL + '/api/user/UID/likedRecipe';
 
   like(recipeId) {
     return fetch(this.RECIPE_URL + '/' + recipeId + '/like', {
@@ -15,10 +16,15 @@ export class LikeServiceClient {
     });
   }
 
-  findLikedRecipesForUser() {
-    return fetch(this.USER_LIKE_URL, {
+  findLikedRecipesForCurrentUser() {
+    return fetch(this.CURRENT_USER_LIKE_URL, {
       credentials: 'include'
     })
+      .then(response => response.json());
+  }
+
+  findLikedRecipesForUser(userId) {
+    return fetch(this.USER_LIKE_URL.replace('UID', userId))
       .then(response => response.json());
   }
 
