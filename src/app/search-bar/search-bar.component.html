@@ -1,48 +1,48 @@
 <!--<div class="row" style="text-align: center">-->
-  <!--<div class="col-2">-->
-    <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR3NvjxIvkMrGJ6EaZ9AejCQghC7mdTgE9xqjbZ42ZfaIR9Iyn"-->
-         <!--(click)="goHome()"-->
-         <!--width="120">-->
-  <!--</div>-->
-  <!--<div class="col-8 container">-->
-      <!--<div class="input-group">-->
-        <!--<input type="text"-->
-               <!--class="form-control"-->
-               <!--[(ngModel)]="searchText"-->
-               <!--(keyup.enter)="navigate(searchText)"-->
-               <!--placeholder="Search for recipes"/>-->
-        <!--<button type="button"-->
-                <!--(click)="navigate(searchText)"-->
-                <!--class="btn btn-primary wbdv-search-button">-->
-          <!--<span class="fa fa-search"></span>-->
-        <!--</button>-->
-      <!--</div>-->
-  <!--</div>-->
-  <!--<div class="col-2 container">-->
-    <!--<div class="row">-->
-      <!--<div *ngIf="!currentUser.username">-->
-        <!--<a routerLink="/login">-->
-          <!--<button class="btn btn-primary">-->
-            <!--Login-->
-          <!--</button>-->
-        <!--</a>-->
-        <!--<a routerLink="/register">-->
-          <!--<button class="btn btn-primary">-->
-            <!--Register-->
-          <!--</button>-->
-        <!--</a>-->
-      <!--</div>-->
-      <!--<div *ngIf="currentUser.username">-->
-        <!--<h3 class="navbar-brand">-->
-          <!--Logged in:-->
-          <!--<a routerLink="/profile"-->
-             <!--class="wbdv-username-anchor">-->
-            <!--{{currentUser.username}}-->
-          <!--</a>-->
-        <!--</h3>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+<!--<div class="col-2">-->
+<!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR3NvjxIvkMrGJ6EaZ9AejCQghC7mdTgE9xqjbZ42ZfaIR9Iyn"-->
+<!--(click)="goHome()"-->
+<!--width="120">-->
+<!--</div>-->
+<!--<div class="col-8 container">-->
+<!--<div class="input-group">-->
+<!--<input type="text"-->
+<!--class="form-control"-->
+<!--[(ngModel)]="searchText"-->
+<!--(keyup.enter)="navigate(searchText)"-->
+<!--placeholder="Search for recipes"/>-->
+<!--<button type="button"-->
+<!--(click)="navigate(searchText)"-->
+<!--class="btn btn-primary wbdv-search-button">-->
+<!--<span class="fa fa-search"></span>-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-2 container">-->
+<!--<div class="row">-->
+<!--<div *ngIf="!currentUser.username">-->
+<!--<a routerLink="/login">-->
+<!--<button class="btn btn-primary">-->
+<!--Login-->
+<!--</button>-->
+<!--</a>-->
+<!--<a routerLink="/register">-->
+<!--<button class="btn btn-primary">-->
+<!--Register-->
+<!--</button>-->
+<!--</a>-->
+<!--</div>-->
+<!--<div *ngIf="currentUser.username">-->
+<!--<h3 class="navbar-brand">-->
+<!--Logged in:-->
+<!--<a routerLink="/profile"-->
+<!--class="wbdv-username-anchor">-->
+<!--{{currentUser.username}}-->
+<!--</a>-->
+<!--</h3>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->
 
 <nav class="navbar navbar-dark bg-dark ">
@@ -51,7 +51,10 @@
       <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR3NvjxIvkMrGJ6EaZ9AejCQghC7mdTgE9xqjbZ42ZfaIR9Iyn"-->
       <!--(click)="goHome()"-->
       <!--width="120">-->
-      <h3 class="navbar-brand">Eze-Cuisine</h3>
+      <h3 class="navbar-brand"
+          (click)="goHome()">
+        Eze-Cuisine
+      </h3>
     </div>
     <div class="col-7">
       <div class="row">
@@ -84,13 +87,13 @@
         </a>
       </div>
       <div *ngIf="currentUser['username']">
-      <h3 class="navbar-brand float-right">
-        Logged in:
-        <a routerLink="/profile"
-           class="wbdv-username-anchor">
-          {{currentUser['username']}}
-        </a>
-      </h3>
+        <h3 class="navbar-brand float-right">
+          Logged in:
+          <a routerLink="/profile"
+             class="wbdv-username-anchor">
+            {{currentUser['username']}}
+          </a>
+        </h3>
       </div>
     </div>
   </div>
