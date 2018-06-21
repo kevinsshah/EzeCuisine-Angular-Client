@@ -6,4 +6,5 @@ export class Rating {
   user: User;
   recipe: Recipe;
   rating: number;
+  review: string;
 }

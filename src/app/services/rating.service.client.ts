@@ -8,8 +8,19 @@ export class RatingServiceClient {
   CURRENT_USER_RATING_URL = this.VARIABLE_URL + '/api/user/ratedRecipe';
   USER_RATING_URL = this.VARIABLE_URL + '/api/user/UID/ratedRecipe';
 
-  rate(recipeId, rating) {
-    const ratingObject = {rating};
+  rate(recipeId, rating, review) {
+    let ratingObject;
+    console.log(rating, review);
+    if (review === '') {
+      ratingObject = {
+        rating
+      };
+    } else {
+      ratingObject = {
+        rating,
+        review
+      };
+    }
     return fetch(this.RECIPE_URL + '/' + recipeId + '/rating', {
       method: 'post',
       credentials: 'include',

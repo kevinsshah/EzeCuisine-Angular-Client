@@ -11,9 +11,6 @@
       <h1>
         {{recipeDetails['name']}}
       </h1>
-      <h2>Yield: {{recipeDetails['yield']}}</h2>
-      <h2>Total time: {{recipeDetails['totalTime']}}</h2>
-      <h2>Number of servings: {{recipeDetails['numberOfServings']}}</h2>
       <h2>Course: {{recipeDetails['course']}}</h2>
       <h2>Rating: {{recipeDetails['yummlyRating']}}</h2>
     </div>
@@ -49,16 +46,37 @@
   <input class="form-control"
          placeholder = "Rating from 1-5"
          [(ngModel)]="rating">
-  <button (click)="rate(rating)"
+  <input class="form-control"
+         *ngIf="currentUser.role === 'Critic'"
+         placeholder = "Critic's Review"
+         [(ngModel)]="criticReview">
+  <button (click)="rate(rating,criticReview)"
           class="btn btn-success">
     Rate
   </button>
+
+  <h2>
+    Ratings
+  </h2>
 
   <ul class="list-group wbdv-recipe">
     <li *ngFor="let ratedUser of ratedUsers"
         class="list-group-item">
       <a routerLink="/profile/{{ratedUser.user.username}}">{{ratedUser.user.username}}</a>
-       {{ratedUser.rating}}
+      <span> {{ratedUser.rating}}</span>
+    </li>
+  </ul>
+
+  <h2>
+    Critic's Reviews
+  </h2>
+
+  <ul class="list-group wbdv-recipe">
+    <li *ngFor="let reviewedUser of reviewedUsers"
+        class="list-group-item">
+      <a routerLink="/profile/{{reviewedUser.user.username}}">{{reviewedUser.user.username}}</a>
+      <span> {{reviewedUser.rating}}</span>
+      <span> {{reviewedUser.review}}</span>
     </li>
   </ul>
 </div>

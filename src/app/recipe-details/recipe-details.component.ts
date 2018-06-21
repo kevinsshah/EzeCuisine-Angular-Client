@@ -31,7 +31,9 @@ export class RecipeDetailsComponent implements OnInit {
   recipeId = '';
   likedUsers: Like[] = [];
   ratedUsers: Rating[] = [];
+  reviewedUsers: Rating[] = [];
   rating = '';
+  criticReview = '';
   currentUser: User = new User();
   ingredientsCount = '';
   totalTime = '';
@@ -47,11 +49,11 @@ export class RecipeDetailsComponent implements OnInit {
     }
   }
 
-  rate(rating) {
+  rate(rating, review) {
     if (this.currentUser['username']) {
       this
         .ratingService
-        .rate(this.recipeId, rating)
+        .rate(this.recipeId, rating, review)
         .then(() => this.loadRatedUsersForRecipe(this.recipeId));
     } else {
       this.router.navigate(['login']);
@@ -75,7 +77,12 @@ export class RecipeDetailsComponent implements OnInit {
     this
       .ratingService
       .findRatedUsersForRecipe(recipeId)
-      .then(users => this.ratedUsers = users);
+      .then(ratings => {
+        this.ratedUsers = ratings
+          .filter(rating => !(rating.user.role === 'Critic'));
+        this.reviewedUsers = ratings
+          .filter(rating => rating.user.role === 'Critic');
+      });
   }
 
   findRecipeById(yummlyId) {
