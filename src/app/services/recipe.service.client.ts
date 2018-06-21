@@ -12,6 +12,11 @@ export class RecipeServiceClient {
       name: result['name'],
       ingredients: result['ingredientLines'].join('\n'),
       imageUrl: result['images'][0]['imageUrlsBySize'][360],
+      yield: result['yield'],
+      totalTime: result['totalTime'],
+      numberOfServings: result['numberOfServings'],
+      course: result['attributes']['course'][0],
+      yummlyRating: result['rating'],
       yummlyId: result['id']
     };
     return fetch(this.RECIPE_URL, {
