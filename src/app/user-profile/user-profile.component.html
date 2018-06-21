@@ -1,7 +1,16 @@
+<nav class="navbar navbar-dark bg-dark justify-content-between wbdv-navbar">
+  <h3 class="navbar-brand">{{user.username}}</h3>
+  <form class="form-inline">
+    <a routerLink="/home">
+      <button class="btn btn-outline-light my-2 my-sm-0"
+              type="button">
+        Home
+      </button>
+    </a>
+  </form>
+</nav>
+
 <div class="container-fluid">
-  <h1>
-    {{user.username}}
-  </h1>
   <button class="btn btn-warning"
           (click)="follow()">
     Follow

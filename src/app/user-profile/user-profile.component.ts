@@ -35,7 +35,8 @@ export class UserProfileComponent implements OnInit {
   follow() {
     if (this.currentUser['username']) {
       this.followService
-        .follow(this.user._id);
+        .follow(this.user._id)
+        .then(() =>  this.loadFollowersForUser());
     } else {
       this.router.navigate(['login']);
     }
