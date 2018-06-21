@@ -7,6 +7,8 @@ import {RatingServiceClient} from '../services/rating.service.client';
 import {User} from '../models/user.model.client';
 import {Like} from '../models/like.model.client';
 import {Rating} from '../models/rating.model.client';
+import {Follow} from '../models/follow.model.client';
+import {FollowServiceClient} from '../services/follow.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -19,12 +21,15 @@ export class ProfileComponent implements OnInit {
               private recipeService: RecipeServiceClient,
               private likeService: LikeServiceClient,
               private ratingService: RatingServiceClient,
+              private followService: FollowServiceClient,
               private router: Router) {
   }
 
   user: User = new User();
   likedRecipes: Like[] = [];
   ratedRecipes: Rating[] = [];
+  followers: Follow[] = [];
+  followings: Follow[] = [];
   alertSuccess = false;
 
   logout() {
@@ -57,6 +62,19 @@ export class ProfileComponent implements OnInit {
       .then(recipes => this.ratedRecipes = recipes);
   }
 
+
+  loadFollowersForUser() {
+    this.followService
+      .getFollowersForCurrentUser()
+      .then(followers => this.followers = followers);
+  }
+
+  loadFollowingForUser() {
+    this.followService
+      .getFollowingForCurrentUser()
+      .then(followings => this.followings = followings);
+  }
+
   ngOnInit() {
     this.userService
       .profile()
@@ -65,6 +83,8 @@ export class ProfileComponent implements OnInit {
           this.user = user;
           this.loadLikedRecipesForUser();
           this.loadRatedRecipesForUser();
+          this.loadFollowersForUser();
+          this.loadFollowingForUser();
         } else {
           this.router.navigate(['login']);
         }

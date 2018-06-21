@@ -6,6 +6,7 @@ export class FollowServiceClient {
   VARIABLE_URL = this.LOCAL_URL;
 
   USER_URL = this.VARIABLE_URL + '/api/user/UID';
+  CURRENT_USER__URL = this.VARIABLE_URL + '/api/user';
 
   follow(toUserId) {
     return fetch(this.USER_URL
@@ -21,9 +22,23 @@ export class FollowServiceClient {
       .then(response => response.json());
   }
 
+  getFollowersForCurrentUser() {
+    return fetch(this.CURRENT_USER__URL + '/followers', {
+      credentials: 'include'
+    })
+      .then(response => response.json());
+  }
+
   getFollowing(userId) {
     return fetch(this.USER_URL
       .replace('UID', userId) + '/following')
+      .then(response => response.json());
+  }
+
+  getFollowingForCurrentUser() {
+    return fetch(this.CURRENT_USER__URL + '/following', {
+      credentials: 'include'
+    })
       .then(response => response.json());
   }
 }

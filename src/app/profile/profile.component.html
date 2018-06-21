@@ -71,5 +71,19 @@
       {{ratedRecipe.recipe.name}}
     </li>
   </ul>
+
+  <h2>Followers</h2>
+  <ul class="list-group">
+    <li *ngFor="let follower of followers" class="list-group-item">
+      {{follower.from.username}}
+    </li>
+  </ul>
+
+  <h2>Following</h2>
+  <ul class="list-group">
+    <li *ngFor="let following of followings" class="list-group-item">
+      {{following.to.username}}
+    </li>
+  </ul>
 </div>
 
