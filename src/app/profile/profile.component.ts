@@ -5,6 +5,8 @@ import {RecipeServiceClient} from '../services/recipe.service.client';
 import {LikeServiceClient} from '../services/like.service.client';
 import {RatingServiceClient} from '../services/rating.service.client';
 import {User} from '../models/user.model.client';
+import {Like} from '../models/like.model.client';
+import {Rating} from '../models/rating.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -21,8 +23,8 @@ export class ProfileComponent implements OnInit {
   }
 
   user: User = new User();
-  likedRecipes = [];
-  ratedRecipes = [];
+  likedRecipes: Like[] = [];
+  ratedRecipes: Rating[] = [];
   alertSuccess = false;
 
   logout() {

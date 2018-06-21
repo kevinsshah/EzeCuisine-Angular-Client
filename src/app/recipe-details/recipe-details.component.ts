@@ -6,6 +6,8 @@ import {LikeServiceClient} from '../services/like.service.client';
 import {RatingServiceClient} from '../services/rating.service.client';
 import {User} from '../models/user.model.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {Like} from '../models/like.model.client';
+import {Rating} from '../models/rating.model.client';
 
 @Component({
   selector: 'app-recipe-details',
@@ -27,8 +29,8 @@ export class RecipeDetailsComponent implements OnInit {
   recipeDetails = {};
   yummlyId = '';
   recipeId = '';
-  likedUsers = [];
-  ratedUsers = [];
+  likedUsers: Like[] = [];
+  ratedUsers: Rating[] = [];
   rating = '';
   currentUser: User = new User();
 
