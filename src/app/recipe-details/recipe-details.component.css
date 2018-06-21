@@ -7,3 +7,46 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+.RecipeSummary {
+  background: #f3f3f3;
+  color: #a3a3a3;
+  padding: 2.5em 0;
+  text-align: center;
+}
+
+.recipe {
+  font-size: .875rem;
+  padding-bottom: 0;
+  background: #fff;
+}
+
+.RecipeSummary .wrapper {
+  padding: 0;
+}
+
+.recipe .wrapper {
+  position: relative;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.recipe-summary-item {
+  position: relative;
+  cursor: default;
+  display: inline-block;
+  width: 33%;
+  font-size: 1.142857142857143em;
+}
+
+.recipe-summary-item .value {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  -ms-font-smoothing: subpixel-antialiased;
+  -o-font-smoothing: subpixel-antialiased;
+  font-smoothing: subpixel-antialiased;
+  font-family: Helvetica Neue,Roboto Thin,Roboto Light,Roboto,HelveticaNeue Light,Helvetica Neue Light,Segoe UI,sans-serif;
+  font-weight: 100;
+  font-size: 2.25em;
+  color: #e16120;
+}

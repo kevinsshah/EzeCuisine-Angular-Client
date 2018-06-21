@@ -19,6 +19,24 @@
 
     </div>
   </div>
+
+  <div class="RecipeSummary">
+    <div class="wrapper">
+      <div class="recipe-summary-item">
+        <span class="value">{{recipeDetails['ingredients'].length}}</span>
+        <label>Ingredients</label>
+      </div>
+      <div class="recipe-summary-item nutrition">
+        <span class="value">{{recipeDetails['numberOfServings']}}</span>
+        <label>Servings</label>
+      </div>
+      <div class="recipe-summary-item ">
+        <span class="value">{{recipeDetails['totalTime'].substr(0,2)}}</span>
+        <label>Minutes</label>
+      </div>
+    </div>
+  </div>
+
   <ul class="list-group wbdv-recipe">
     <li *ngFor="let ingredient of recipeDetails['ingredients']"
         class="list-group-item">
