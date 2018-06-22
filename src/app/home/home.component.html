@@ -28,8 +28,11 @@
 
 <div class="container wbdv-top-bottom-container">
   <div class="card-columns">
-    <div class="card" *ngFor="let dish of dishes" (click)="navigate(dish.id, dish.recipeName)">
-      <img class="card-img-top" src="{{dish.imageUrlsBySize[90]}}">
+    <div class="card"
+         *ngFor="let dish of dishes"
+         (click)="navigate(dish.id, dish.recipeName)">
+      <img class="card-img-top"
+           src="{{dish.imageUrlsBySize[90]}}">
       <div class="card-body">
         <h5 class="card-title">{{dish.recipeName}}</h5>
         <p class="card-text">{{dish.sourceDisplayName}}</p>

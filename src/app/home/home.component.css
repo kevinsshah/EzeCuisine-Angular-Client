@@ -2,6 +2,10 @@
   margin-bottom: 50px;
 }
 
+.wbdv-top-bottom-container .card {
+  cursor: pointer;
+}
+
 .view {
   filter: brightness(70%);
 }

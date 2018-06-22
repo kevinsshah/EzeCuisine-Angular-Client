@@ -15,6 +15,7 @@
 .wbdv-nav {
   margin-top:20px;
   background-color: white;
+  cursor: pointer;
 }
 
 .wbdv-nav .active {

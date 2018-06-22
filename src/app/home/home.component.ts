@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       subHeading: 'Sub heading'
     },
     {
-      imageSrc: 'http://www.donafilipahotel.com/media/2399125/_8004535.jpg?mode=crop-up&cropUpAlias=carousel&quality=70',
+      imageSrc: 'http://www.gettwistedmeals.com/photos/IMG-0569.jpg?autorotate=true&mode=crop&scale=both&quality=50&width=1600&height=700',
       mainHeading: 'Main heading',
       subHeading: 'Sub heading'
     }

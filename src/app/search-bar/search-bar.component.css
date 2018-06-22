@@ -3,6 +3,9 @@
   margin-bottom: 50px;
 }
 
+.wbdv-navbar .navbar-brand {
+  cursor: pointer;
+}
 
 .btn.btn-outline-light {
   margin-left: 5px;
