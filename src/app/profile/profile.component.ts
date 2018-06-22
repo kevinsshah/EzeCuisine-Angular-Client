@@ -44,12 +44,14 @@ export class ProfileComponent implements OnInit {
   }
 
   unfollow(following) {
+    event.stopPropagation();
     this.followService
       .unfollow(following.to._id)
       .then(() => this.loadFollowingForUser());
   }
 
   unlike(likedRecipe) {
+    event.stopPropagation();
     this.likeService
       .unlike(likedRecipe.recipe._id)
       .then(() => this.loadLikedRecipesForUser());
