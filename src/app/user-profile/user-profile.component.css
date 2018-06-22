@@ -68,3 +68,35 @@
 a.wbdv-username-anchor{
   color: white;
 }
+
+.wbdv-rated {
+  border: none;
+  float: right;
+}
+
+.wbdv-rated .highlight ~ label {
+  color: #FFD700;
+}
+
+.wbdv-rated > input {
+  display: none;
+}
+
+.wbdv-rated > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.wbdv-rated > label {
+  color: #ddd;
+  float: right;
+}
+
+.wbdv-review {
+  white-space: normal;
+  width: 100%;
+  word-wrap: break-word;
+}

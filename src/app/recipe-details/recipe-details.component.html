@@ -149,7 +149,7 @@
     <li *ngFor="let reviewedUser of reviewedUsers"
         (click)="goToUserProfile(reviewedUser.user.username)"
         class="list-group-item wbdv-group-item wbdv-linebreaks">
-      <h5>{{reviewedUser.user.username}}</h5>
+      <b>{{reviewedUser.user.username}}</b>
 
       <div class="wbdv-rated">
         <input type="radio"
@@ -184,7 +184,7 @@
         </label>
       </div>
 
-      <span class="wbdv-review">{{reviewedUser.review}}</span>
+      <div class="wbdv-review">{{reviewedUser.review}}</div>
 
     </li>
   </ul>
@@ -197,7 +197,7 @@
     <li *ngFor="let ratedUser of ratedUsers"
         (click)="goToUserProfile(ratedUser.user.username)"
         class="list-group-item wbdv-group-item">
-      {{ratedUser.user.username}}
+      <b>{{ratedUser.user.username}}</b>
 
       <div class="wbdv-rated">
         <input type="radio"

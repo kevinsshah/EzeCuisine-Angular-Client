@@ -106,7 +106,43 @@
       <li *ngFor="let ratedRecipe of ratedRecipes"
           (click)="navigateToRecipe(ratedRecipe)"
           class="list-group-item wbdv-rated-recipe">
-        {{ratedRecipe.recipe.name}}
+        <b>{{ratedRecipe.recipe.name}}</b>
+
+        <div class="wbdv-rated">
+          <input type="radio"
+                 id="star5a"
+                 [ngClass]="{highlight: ratedRecipe.rating === 5}"/>
+          <label for="star5a"
+                 title="OUTSTANDING">
+          </label>
+          <input type="radio"
+                 id="star4a"
+                 [ngClass]="{highlight: ratedRecipe.rating === 4}"/>
+          <label for="star4a"
+                 title="REALLY GOOD">
+          </label>
+          <input type="radio"
+                 id="star3a"
+                 [ngClass]="{highlight: ratedRecipe.rating === 3}"/>
+          <label for="star3a"
+                 title="JUST GOOD">
+          </label>
+          <input type="radio"
+                 id="star2a"
+                 [ngClass]="{highlight: ratedRecipe.rating === 2}"/>
+          <label for="star2a"
+                 title="SO SO">
+          </label>
+          <input type="radio"
+                 id="star1a"
+                 [ngClass]="{highlight: ratedRecipe.rating === 1}"/>
+          <label for="star1a"
+                 title="DIDN'T LIKE IT">
+          </label>
+        </div>
+
+        <div class="wbdv-review">{{ratedRecipe.review}}</div>
+
       </li>
     </ul>
   </div>
@@ -142,6 +178,6 @@
       </li>
     </ul>
   </div>
-  </div>
+</div>
 
 
