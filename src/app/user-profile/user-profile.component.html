@@ -7,6 +7,29 @@
         Home
       </button>
     </a>
+    <div *ngIf="!currentUser['username']">
+      <a routerLink="/register">
+        <button class="btn btn-outline-light my-2 my-sm-0 float-right"
+                type="button">
+          Register
+        </button>
+      </a>
+      <a routerLink="/login">
+        <button class="btn btn-outline-light my-2 my-sm-0 float-right"
+                type="button">
+          Login
+        </button>
+      </a>
+    </div>
+    <div *ngIf="currentUser['username']">
+      <h3 class="navbar-brand float-right">
+        Logged in:
+        <a routerLink="/profile"
+           class="wbdv-username-anchor">
+          {{currentUser['username']}}
+        </a>
+      </h3>
+    </div>
   </form>
 </nav>
 
@@ -21,9 +44,15 @@
   <img src="http://heritageradionetwork.org/wp-content/uploads/2015/06/commentary.png"
        *ngIf="user.role === 'Critic'"
        class="center">
-  <button class="btn btn-warning"
+  <button class="btn btn-success"
+          *ngIf="!(this.currentUser.username) || !isUserFollowed"
           (click)="follow()">
     Follow
+  </button>
+  <button class="btn btn-warning"
+          *ngIf="isUserFollowed"
+          (click)="unfollow()">
+    UnFollow
   </button>
 </div>
 

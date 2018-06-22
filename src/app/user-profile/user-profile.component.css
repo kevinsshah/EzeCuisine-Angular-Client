@@ -56,3 +56,7 @@
 .list-group-item.wbdv-following {
   cursor: pointer;
 }
+
+a.wbdv-username-anchor{
+  color: white;
+}
