@@ -10,39 +10,82 @@
   </form>
 </nav>
 
-<div class="container-fluid">
+<div class="wbdv-user-info-component">
+  {{user.username}}
+  <img src="https://cdn3.iconfinder.com/data/icons/vacation-4/32/vacation_29-512.png"
+       *ngIf="user.role === 'Customer'"
+       class="center">
+  <img src="https://cdn.iconscout.com/public/images/icon/premium/png-512/hat-chef-34a84148ee18041e-512x512.png"
+       *ngIf="user.role === 'Chef'"
+       class="center">
+  <img src="http://heritageradionetwork.org/wp-content/uploads/2015/06/commentary.png"
+       *ngIf="user.role === 'Critic'"
+       class="center">
   <button class="btn btn-warning"
           (click)="follow()">
     Follow
   </button>
+</div>
 
-  <h2>Liked recipes</h2>
-  <ul class="list-group">
-    <li *ngFor="let likedRecipe of likedRecipes" class="list-group-item">
-      {{likedRecipe.recipe.name}}
-    </li>
-  </ul>
+<div class="container-fluid wbdv-profile">
 
-  <h2>Rated recipes</h2>
-  <ul class="list-group">
-    <li *ngFor="let ratedRecipe of ratedRecipes" class="list-group-item">
-      {{ratedRecipe.recipe.name}}
-    </li>
-  </ul>
+  <div class="wbdv-nav">
+    <nav class="nav nav-pills nav-justified">
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Liked Recipes'}"
+           (click)="changeSelection('Liked Recipes')">
+        Liked Recipes
+      </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Rated Recipes'}"
+           (click)="changeSelection('Rated Recipes')">
+        Rated Recipes
+      </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Followers'}"
+           (click)="changeSelection('Followers')">
+        Followers
+      </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Following'}"
+           (click)="changeSelection('Following')">
+        Following
+      </div>
+    </nav>
+  </div>
 
-  <h2>Followers</h2>
-  <ul class="list-group">
-    <li *ngFor="let follower of followers" class="list-group-item">
-      {{follower.from.username}}
-    </li>
-  </ul>
+  <div class="wbdv-selection" *ngIf="selection === 'Liked Recipes'">
+    <ul class="list-group">
+      <li *ngFor="let likedRecipe of likedRecipes" class="list-group-item">
+        {{likedRecipe.recipe.name}}
+      </li>
+    </ul>
+  </div>
 
-  <h2>Following</h2>
-  <ul class="list-group">
-    <li *ngFor="let following of followings" class="list-group-item">
-      {{following.to.username}}
-    </li>
-  </ul>
+  <div class="wbdv-selection" *ngIf="selection === 'Rated Recipes'">
+    <ul class="list-group">
+      <li *ngFor="let ratedRecipe of ratedRecipes" class="list-group-item">
+        {{ratedRecipe.recipe.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="wbdv-selection" *ngIf="selection === 'Followers'">
+    <ul class="list-group">
+      <li *ngFor="let follower of followers" class="list-group-item">
+        {{follower.from.username}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="wbdv-selection" *ngIf="selection === 'Following'">
+    <ul class="list-group">
+      <li *ngFor="let following of followings" class="list-group-item">
+        {{following.to.username}}
+      </li>
+    </ul>
+  </div>
+
 </div>
 
 

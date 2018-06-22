@@ -31,6 +31,7 @@ export class UserProfileComponent implements OnInit {
   ratedRecipes: Rating[] = [];
   followers: Follow[] = [];
   followings: Follow[] = [];
+  selection = 'Liked Recipes';
 
   follow() {
     if (this.currentUser['username']) {
@@ -77,6 +78,10 @@ export class UserProfileComponent implements OnInit {
     this.followService
       .getFollowing(this.user._id)
       .then(followings => this.followings = followings);
+  }
+
+  changeSelection(selection) {
+    this.selection = selection;
   }
 
   ngOnInit() {

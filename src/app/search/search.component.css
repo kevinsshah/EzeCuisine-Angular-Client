@@ -10,4 +10,10 @@ img {
   margin-right: 5px;
 }
 
+.wbdv-group-item {
+  cursor: pointer;
+}
 
+.wbdv-pagination-component {
+  text-align: center;
+}

@@ -1,0 +1,42 @@
+.list-group.wbdv-profile {
+  margin-top: 20px;
+}
+
+.btn.btn-outline-light {
+  margin-right: 5px;
+}
+
+.container-fluid.wbdv-profile {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.wbdv-nav {
+  margin-top:20px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.wbdv-nav .active {
+  background-color: #343A40;
+}
+
+.wbdv-selection {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.center {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.wbdv-user-info-component {
+  text-align: center;
+  margin-top:20px;
+  font-size: 25px;
+}

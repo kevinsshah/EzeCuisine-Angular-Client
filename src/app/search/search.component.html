@@ -5,7 +5,7 @@
     <ul class="list-group wbdv-project">
       <li *ngFor="let result of results"
           (click)="navigate(result.id)"
-          class="list-group-item">
+          class="list-group-item wbdv-group-item">
         <img alt=" "
              *ngIf="result.smallImageUrls"
              src={{result.smallImageUrls[0]}}>
@@ -14,7 +14,7 @@
     </ul>
   </div>
 
-  <div style="text-align: center"
+  <div class="wbdv-pagination-component"
        *ngIf="results.length > 0">
     <button type="button"
             (click)="searchRecipes(searchText, currentPage - 1)"
