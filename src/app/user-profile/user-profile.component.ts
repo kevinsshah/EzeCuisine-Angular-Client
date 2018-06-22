@@ -32,15 +32,34 @@ export class UserProfileComponent implements OnInit {
   followers: Follow[] = [];
   followings: Follow[] = [];
   selection = 'Liked Recipes';
+  isUserFollowed = false;
 
   follow() {
     if (this.currentUser['username']) {
       this.followService
         .follow(this.user._id)
-        .then(() =>  this.loadFollowersForUser());
+        .then(() =>  {
+          this.loadFollowersForUser();
+          this.isUserFollowed = true;
+        });
     } else {
       this.router.navigate(['login']);
     }
+  }
+
+  unfollow() {
+    this.followService
+      .unfollow(this.user._id)
+      .then(() => {
+        this.isUserFollowed = false;
+        this.loadFollowersForUser();
+      });
+  }
+
+  isFollowed() {
+    const followerUserIds = this.followers.map(follow => follow.from._id);
+    this.isUserFollowed = !(followerUserIds.indexOf(this.currentUser._id) === -1);
+    return this.isUserFollowed;
   }
 
   loadUser(username) {
@@ -83,7 +102,10 @@ export class UserProfileComponent implements OnInit {
   loadFollowersForUser() {
     this.followService
       .getFollowers(this.user._id)
-      .then(followers => this.followers = followers);
+      .then(followers => {
+        this.followers = followers;
+        this.isFollowed();
+      });
   }
 
   loadFollowingForUser() {

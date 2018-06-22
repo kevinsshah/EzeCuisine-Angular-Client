@@ -45,7 +45,10 @@ export class RecipeDetailsComponent implements OnInit {
       this
         .likeService
         .like(this.recipeId)
-        .then(() => this.isRecipeLiked = true);
+        .then(() => {
+          this.isRecipeLiked = true;
+          this.loadLikedUsersForRecipe(this.recipeId);
+        });
     } else {
       this.router.navigate(['login']);
     }
@@ -54,7 +57,10 @@ export class RecipeDetailsComponent implements OnInit {
   unlike() {
     this.likeService
       .unlike(this.recipeId)
-      .then(() => this.isRecipeLiked = false);
+      .then(() => {
+        this.isRecipeLiked = false
+        this.loadLikedUsersForRecipe(this.recipeId);
+      });
   }
 
   isLiked() {
