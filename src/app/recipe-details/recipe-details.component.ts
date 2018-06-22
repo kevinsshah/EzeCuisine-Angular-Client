@@ -32,13 +32,19 @@ export class RecipeDetailsComponent implements OnInit {
   likedUsers: Like[] = [];
   ratedUsers: Rating[] = [];
   reviewedUsers: Rating[] = [];
-  rating = '';
-  criticReview = '';
   currentUser: User = new User();
   ingredientsCount = '';
   totalTime = '';
   totalTimeUnit = '';
   isRecipeLiked = false;
+  newRating = 0;
+  newReview = '';
+  myRatings: Rating[] = [];
+  myRatingId = '';
+
+  changeRating(newRating) {
+    this.newRating = newRating;
+  }
 
   like() {
     if (this.currentUser['username']) {
@@ -58,7 +64,7 @@ export class RecipeDetailsComponent implements OnInit {
     this.likeService
       .unlike(this.recipeId)
       .then(() => {
-        this.isRecipeLiked = false
+        this.isRecipeLiked = false;
         this.loadLikedUsersForRecipe(this.recipeId);
       });
   }
@@ -69,15 +75,22 @@ export class RecipeDetailsComponent implements OnInit {
     return this.isRecipeLiked;
   }
 
-  rate(rating, review) {
+  rate() {
     if (this.currentUser['username']) {
       this
         .ratingService
-        .rate(this.recipeId, rating, review)
+        .rate(this.recipeId, this.newRating, this.newReview)
         .then(() => this.loadRatedUsersForRecipe(this.recipeId));
     } else {
       this.router.navigate(['login']);
     }
+  }
+
+  updateRating() {
+    this
+      .ratingService
+      .updateRating(this.myRatingId, this.newRating, this.newReview)
+      .then(() => this.loadRatedUsersForRecipe(this.recipeId));
   }
 
   setRecipeId(params) {
@@ -99,10 +112,17 @@ export class RecipeDetailsComponent implements OnInit {
       .ratingService
       .findRatedUsersForRecipe(recipeId)
       .then(ratings => {
+        this.myRatings = ratings
+          .filter(rating => (rating.user._id === this.currentUser._id));
+        if (this.myRatings.length > 0) {
+          this.myRatingId = this.myRatings[0]._id;
+          this.newRating = this.myRatings[0].rating;
+          this.newReview = this.myRatings[0].review;
+        }
         this.ratedUsers = ratings
-          .filter(rating => !(rating.user.role === 'Critic'));
+          .filter(rating => !(rating.user.role === 'Critic' || rating.user._id === this.currentUser._id));
         this.reviewedUsers = ratings
-          .filter(rating => rating.user.role === 'Critic');
+          .filter(rating => rating.user.role === 'Critic' && !(rating.user._id === this.currentUser._id));
       });
   }
 
@@ -138,7 +158,6 @@ export class RecipeDetailsComponent implements OnInit {
                 this.ingredientsCount = recipe['ingredients'].length;
                 this.recipeDetails = recipe;
                 this.recipeId = recipe['_id'];
-                this.loadRatedUsersForRecipe(this.recipeId);
               }
             });
         }
