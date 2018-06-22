@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {YummlyServiceClient} from '../services/yummly.service.client';
 import {RecipeServiceClient} from '../services/recipe.service.client';
@@ -38,12 +38,14 @@ export class RecipeDetailsComponent implements OnInit {
   ingredientsCount = '';
   totalTime = '';
   totalTimeUnit = '';
+  isRecipeLiked = false;
 
   like() {
     if (this.currentUser['username']) {
       this
         .likeService
-        .like(this.recipeId);
+        .like(this.recipeId)
+        .then(() => this.isRecipeLiked = true);
     } else {
       this.router.navigate(['login']);
     }
@@ -51,12 +53,14 @@ export class RecipeDetailsComponent implements OnInit {
 
   unlike() {
     this.likeService
-      .unlike(this.recipeId);
+      .unlike(this.recipeId)
+      .then(() => this.isRecipeLiked = false);
   }
 
   isLiked() {
     const likedUserIds = this.likedUsers.map(like => like.user._id);
-    return !(likedUserIds.indexOf(this.currentUser._id) === -1);
+    this.isRecipeLiked = !(likedUserIds.indexOf(this.currentUser._id) === -1);
+    return this.isRecipeLiked;
   }
 
   rate(rating, review) {
@@ -80,7 +84,8 @@ export class RecipeDetailsComponent implements OnInit {
     this
       .likeService
       .findLikedUsersForRecipe(recipeId)
-      .then(users => this.likedUsers = users);
+      .then(users => this.likedUsers = users)
+      .then(() => this.isLiked());
   }
 
   loadRatedUsersForRecipe(recipeId) {
@@ -118,18 +123,18 @@ export class RecipeDetailsComponent implements OnInit {
                 .createRecipe(result)
             )
             .then(recipe => {
-            if (recipe['ingredients']) {
-              recipe['ingredients'] = recipe['ingredients'].split('\n');
-              if (recipe['totalTime']) {
-                this.totalTime = recipe['totalTime'].substr(0, recipe['totalTime'].indexOf(' '));
-                this.totalTimeUnit = recipe['totalTime'].substr(recipe['totalTime'].indexOf(' ') + 1);
+              if (recipe['ingredients']) {
+                recipe['ingredients'] = recipe['ingredients'].split('\n');
+                if (recipe['totalTime']) {
+                  this.totalTime = recipe['totalTime'].substr(0, recipe['totalTime'].indexOf(' '));
+                  this.totalTimeUnit = recipe['totalTime'].substr(recipe['totalTime'].indexOf(' ') + 1);
+                }
+                this.ingredientsCount = recipe['ingredients'].length;
+                this.recipeDetails = recipe;
+                this.recipeId = recipe['_id'];
+                this.loadRatedUsersForRecipe(this.recipeId);
               }
-              this.ingredientsCount = recipe['ingredients'].length;
-              this.recipeDetails = recipe;
-              this.recipeId = recipe['_id'];
-              this.loadRatedUsersForRecipe(this.recipeId);
-            }
-          });
+            });
         }
       });
   }
