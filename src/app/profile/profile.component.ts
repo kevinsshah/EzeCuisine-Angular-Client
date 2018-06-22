@@ -143,7 +143,7 @@ export class ProfileComponent implements OnInit {
 
   loadCreatedRecipes() {
     this.recipeService
-      .findCreatedRecipes()
+      .findCreatedRecipesForCurrentUser()
       .then(recipes => this.createdRecipes = recipes);
   }
 

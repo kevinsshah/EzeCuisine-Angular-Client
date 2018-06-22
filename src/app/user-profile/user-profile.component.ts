@@ -8,6 +8,8 @@ import {LikeServiceClient} from '../services/like.service.client';
 import {RatingServiceClient} from '../services/rating.service.client';
 import {FollowServiceClient} from '../services/follow.service.client';
 import {Follow} from '../models/follow.model.client';
+import {Recipe} from '../models/recipe.model.client';
+import {RecipeServiceClient} from '../services/recipe.service.client';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,6 +23,7 @@ export class UserProfileComponent implements OnInit {
               private likeService: LikeServiceClient,
               private ratingService: RatingServiceClient,
               private followService: FollowServiceClient,
+              private recipeService: RecipeServiceClient,
               private router: Router) {
     this.route.params.subscribe(params =>  this.loadUser(params['username']));
   }
@@ -33,6 +36,7 @@ export class UserProfileComponent implements OnInit {
   followings: Follow[] = [];
   selection = 'Liked Recipes';
   isUserFollowed = false;
+  createdRecipes: Recipe[] = [];
 
   follow() {
     if (this.currentUser['username']) {
@@ -72,6 +76,7 @@ export class UserProfileComponent implements OnInit {
         this.loadRatedRecipesForUser();
         this.loadFollowersForUser();
         this.loadFollowingForUser();
+        this.loadCreatedRecipes();
       });
   }
 
@@ -112,6 +117,12 @@ export class UserProfileComponent implements OnInit {
     this.followService
       .getFollowing(this.user._id)
       .then(followings => this.followings = followings);
+  }
+
+  loadCreatedRecipes() {
+    this.recipeService
+      .findCreatedRecipesForUser(this.user._id)
+      .then(recipes => this.createdRecipes = recipes);
   }
 
   changeSelection(selection) {

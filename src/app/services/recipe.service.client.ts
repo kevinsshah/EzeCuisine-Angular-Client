@@ -6,7 +6,8 @@ export class RecipeServiceClient {
   VARIABLE_URL = this.LOCAL_URL;
 
   RECIPE_URL = this.VARIABLE_URL + '/api/recipe';
-  CREATED_RECIPE_URL = this.VARIABLE_URL + '/api/user/createdRecipe';
+  CURRENT_USER_CREATED_RECIPE_URL = this.VARIABLE_URL + '/api/user/createdRecipe';
+  USER_CREATED_RECIPE_URL = this.VARIABLE_URL + '/api/user/UID/createdRecipe';
 
   createRecipe(result) {
     const recipe = {
@@ -57,9 +58,15 @@ export class RecipeServiceClient {
       .then(response => response.json());
   }
 
-  findCreatedRecipes() {
-    return fetch(this.CREATED_RECIPE_URL, {
+  findCreatedRecipesForCurrentUser() {
+    return fetch(this.CURRENT_USER_CREATED_RECIPE_URL, {
       credentials: 'include'
     }).then(response => response.json());
+  }
+
+  findCreatedRecipesForUser(userId) {
+    return fetch(this.USER_CREATED_RECIPE_URL
+      .replace('UID', userId))
+      .then(response => response.json());
   }
 }

@@ -80,6 +80,12 @@
            (click)="changeSelection('Following')">
         Following
       </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Your Recipes'}"
+           *ngIf="user.role === 'Chef'"
+           (click)="changeSelection('Your Recipes')">
+        {{user.username}}'s Recipes
+      </div>
     </nav>
   </div>
 
@@ -126,6 +132,16 @@
       </li>
     </ul>
   </div>
-</div>
+
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Your Recipes'">
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let recipe of createdRecipes">
+        {{recipe.name}}
+      </li>
+    </ul>
+  </div>
+  </div>
 
 
