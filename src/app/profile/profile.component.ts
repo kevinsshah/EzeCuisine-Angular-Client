@@ -9,6 +9,8 @@ import {Like} from '../models/like.model.client';
 import {Rating} from '../models/rating.model.client';
 import {Follow} from '../models/follow.model.client';
 import {FollowServiceClient} from '../services/follow.service.client';
+import {Recipe} from '../models/recipe.model.client';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -22,6 +24,7 @@ export class ProfileComponent implements OnInit {
               private likeService: LikeServiceClient,
               private ratingService: RatingServiceClient,
               private followService: FollowServiceClient,
+              private modalService: NgbModal,
               private router: Router) {
   }
 
@@ -32,6 +35,10 @@ export class ProfileComponent implements OnInit {
   followings: Follow[] = [];
   alertSuccess = false;
   selection = 'Liked Recipes';
+  newRecipe: Recipe = new Recipe();
+  createdRecipes: Recipe[] = [];
+  closeResult: string;
+  modalReference: NgbModalRef;
 
   logout() {
     this.userService
@@ -41,6 +48,15 @@ export class ProfileComponent implements OnInit {
 
   removeAlert() {
     this.alertSuccess = false;
+  }
+
+  createRecipe() {
+    this.recipeService
+      .createChefsRecipe(this.newRecipe, this.user._id)
+      .then(() => {
+        this.loadCreatedRecipes();
+        this.modalReference.close();
+      });
   }
 
   unfollow(following) {
@@ -81,6 +97,25 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  open(content) {
+    this.modalReference = this.modalService.open(content, { size : 'lg'});
+    this.modalReference.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
   loadLikedRecipesForUser() {
     this.likeService
       .findLikedRecipesForCurrentUser()
@@ -106,6 +141,12 @@ export class ProfileComponent implements OnInit {
       .then(followings => this.followings = followings);
   }
 
+  loadCreatedRecipes() {
+    this.recipeService
+      .findCreatedRecipes()
+      .then(recipes => this.createdRecipes = recipes);
+  }
+
   ngOnInit() {
     this.userService
       .profile()
@@ -116,6 +157,7 @@ export class ProfileComponent implements OnInit {
           this.loadRatedRecipesForUser();
           this.loadFollowersForUser();
           this.loadFollowingForUser();
+          this.loadCreatedRecipes();
         } else {
           this.router.navigate(['login']);
         }

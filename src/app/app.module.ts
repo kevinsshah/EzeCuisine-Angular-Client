@@ -20,6 +20,7 @@ import {RatingServiceClient} from './services/rating.service.client';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import {FollowServiceClient} from './services/follow.service.client';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {FollowServiceClient} from './services/follow.service.client';
     FormsModule,
     routing,
     CarouselModule,
-    WavesModule
+    WavesModule,
+    NgbModule.forRoot()
   ],
   providers: [
     YummlyServiceClient,

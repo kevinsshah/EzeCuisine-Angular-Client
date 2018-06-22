@@ -51,6 +51,12 @@
            (click)="changeSelection('Update Profile')">
         Update Profile
       </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Your Recipes'}"
+           *ngIf="user.role === 'Chef'"
+           (click)="changeSelection('Your Recipes')">
+        Your Recipes
+      </div>
     </nav>
   </div>
 
@@ -163,6 +169,76 @@
             class="btn btn-dark btn-block">
       Update
     </button>
+  </div>
+
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Your Recipes'">
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Create your own recipe</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Recipe Name</label>
+          <input [(ngModel)]="newRecipe.name"
+                 placeholder="recipe name"
+                 class="form-control"/>
+        </div>
+
+        <div class="form-group">
+          <label>Ingredients (Add each ingredient on a new line)</label>
+          <textarea [(ngModel)]="newRecipe.ingredients"
+                    placeholder="ingredients"
+                    class="form-control">
+      </textarea>
+        </div>
+
+        <div class="form-group">
+          <label>ImageUrl</label>
+          <input [(ngModel)]="newRecipe.imageUrl"
+                 placeholder="image url of recipe"
+                 class="form-control"/>
+        </div>
+
+        <div class="form-group">
+          <label>Total time required</label>
+          <input [(ngModel)]="newRecipe.totalTime"
+                 placeholder="total time required"
+                 class="form-control"/>
+        </div>
+
+        <div class="form-group">
+          <label>Number of Servings</label>
+          <input [(ngModel)]="newRecipe.numberOfServings"
+                 placeholder="number of servings"
+                 class="form-control"/>
+        </div>
+
+        <button (click)="createRecipe()"
+                class="btn btn-dark btn-block">
+          Add
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+      </div>
+    </ng-template>
+
+    <button class="btn btn-dark btn-block mb-2 mr-2"
+            (click)="open(content)">
+      Add a recipe
+    </button>
+
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let recipe of createdRecipes">
+        {{recipe.name}}
+      </li>
+    </ul>
   </div>
 </div>
 
