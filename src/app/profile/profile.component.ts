@@ -43,6 +43,18 @@ export class ProfileComponent implements OnInit {
     this.alertSuccess = false;
   }
 
+  navigateToRecipe(likedRecipe) {
+    this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
+  }
+
+  navigateToFollowerProfile(follower) {
+    this.router.navigate(['profile/' + follower.from.username]);
+  }
+
+  navigateToFollowingProfile(following) {
+    this.router.navigate(['profile/' + following.to.username]);
+  }
+
   changeSelection(selection) {
     this.selection = selection;
   }

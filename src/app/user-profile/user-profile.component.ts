@@ -56,6 +56,18 @@ export class UserProfileComponent implements OnInit {
       });
   }
 
+  navigateToRecipe(likedRecipe) {
+    this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
+  }
+
+  navigateToFollowerProfile(follower) {
+    this.router.navigate(['profile/' + follower.from.username]);
+  }
+
+  navigateToFollowingProfile(following) {
+    this.router.navigate(['profile/' + following.to.username]);
+  }
+
   loadLikedRecipesForUser() {
     this.likeService
       .findLikedRecipesForUser(this.user._id)

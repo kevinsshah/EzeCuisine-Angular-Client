@@ -54,39 +54,52 @@
     </nav>
   </div>
 
-  <div class="wbdv-selection" *ngIf="selection === 'Liked Recipes'">
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Liked Recipes'">
     <ul class="list-group">
-      <li *ngFor="let likedRecipe of likedRecipes" class="list-group-item">
+      <li *ngFor="let likedRecipe of likedRecipes"
+          (click)="navigateToRecipe(likedRecipe)"
+          class="list-group-item wbdv-liked-recipe">
         {{likedRecipe.recipe.name}}
       </li>
     </ul>
   </div>
 
-  <div class="wbdv-selection" *ngIf="selection === 'Rated Recipes'">
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Rated Recipes'">
     <ul class="list-group">
-      <li *ngFor="let ratedRecipe of ratedRecipes" class="list-group-item">
+      <li *ngFor="let ratedRecipe of ratedRecipes"
+          (click)="navigateToRecipe(ratedRecipe)"
+          class="list-group-item wbdv-rated-recipe">
         {{ratedRecipe.recipe.name}}
       </li>
     </ul>
   </div>
 
-  <div class="wbdv-selection" *ngIf="selection === 'Followers'">
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Followers'">
     <ul class="list-group">
-      <li *ngFor="let follower of followers" class="list-group-item">
+      <li *ngFor="let follower of followers"
+          (click)="navigateToFollowerProfile(follower)"
+          class="list-group-item wbdv-follower">
         {{follower.from.username}}
       </li>
     </ul>
   </div>
 
-  <div class="wbdv-selection" *ngIf="selection === 'Following'">
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Following'">
     <ul class="list-group">
-      <li *ngFor="let following of followings" class="list-group-item">
+      <li *ngFor="let following of followings"
+          (click)="navigateToFollowingProfile(following)"
+          class="list-group-item wbdv-following">
         {{following.to.username}}
       </li>
     </ul>
   </div>
 
-  <div class="wbdv-selection" *ngIf="selection === 'Update Profile'">
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Update Profile'">
     <div class="alert alert-success alert-dismissible fade show"
          role="alert"
          *ngIf="alertSuccess == true">

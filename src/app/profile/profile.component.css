@@ -26,3 +26,21 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.list-group-item.wbdv-liked-recipe {
+  cursor: pointer;
+}
+
+.list-group-item.wbdv-rated-recipe {
+  cursor: pointer;
+}
+
+.list-group-item.wbdv-follower {
+  cursor: pointer;
+}
+
+.list-group-item.wbdv-following {
+  cursor: pointer;
+}
+
+

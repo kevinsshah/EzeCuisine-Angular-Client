@@ -40,3 +40,19 @@
   margin-top:20px;
   font-size: 25px;
 }
+
+.list-group-item.wbdv-liked-recipe {
+  cursor: pointer;
+}
+
+.list-group-item.wbdv-rated-recipe {
+  cursor: pointer;
+}
+
+.list-group-item.wbdv-follower {
+  cursor: pointer;
+}
+
+.list-group-item.wbdv-following {
+  cursor: pointer;
+}
