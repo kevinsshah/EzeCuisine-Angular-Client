@@ -16,6 +16,14 @@ export class FollowServiceClient {
     });
   }
 
+  unfollow(toUserId) {
+    return fetch(this.USER_URL
+      .replace('UID', toUserId) + '/unfollow', {
+      method: 'delete',
+      credentials: 'include',
+    });
+  }
+
   getFollowers(userId) {
     return fetch(this.USER_URL
       .replace('UID', userId) + '/followers')

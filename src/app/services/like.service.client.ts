@@ -16,6 +16,13 @@ export class LikeServiceClient {
     });
   }
 
+  unlike(recipeId) {
+    return fetch(this.RECIPE_URL + '/' + recipeId + '/unlike', {
+      method: 'delete',
+      credentials: 'include'
+    });
+  }
+
   findLikedRecipesForCurrentUser() {
     return fetch(this.CURRENT_USER_LIKE_URL, {
       credentials: 'include'
