@@ -7,10 +7,10 @@ export class RatingServiceClient {
   RECIPE_URL = this.VARIABLE_URL + '/api/recipe';
   CURRENT_USER_RATING_URL = this.VARIABLE_URL + '/api/user/ratedRecipe';
   USER_RATING_URL = this.VARIABLE_URL + '/api/user/UID/ratedRecipe';
+  RATING_URL = this.VARIABLE_URL + '/api/rating/RATID';
 
   rate(recipeId, rating, review) {
     let ratingObject;
-    console.log(rating, review);
     if (review === '') {
       ratingObject = {
         rating
@@ -27,6 +27,28 @@ export class RatingServiceClient {
       body: JSON.stringify(ratingObject),
       headers: {
         'content-type': 'application/json'
+      }
+    });
+  }
+
+  updateRating(ratingId, rating, review) {
+    let ratingObject;
+    if (review === '') {
+      ratingObject = {
+        rating
+      };
+    } else {
+      ratingObject = {
+        rating,
+        review
+      };
+    }
+    return fetch(this.RATING_URL
+      .replace('RATID', ratingId), {
+      method: 'put',
+      body: JSON.stringify(ratingObject),
+      headers: {
+        'content-type' : 'application/json'
       }
     });
   }
