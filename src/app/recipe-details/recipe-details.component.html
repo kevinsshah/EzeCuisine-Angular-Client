@@ -3,9 +3,21 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <img alt="Image not available"
-           *ngIf="recipeDetails['imageUrl']"
-           src="{{recipeDetails['imageUrl']}}">
+      <div class="wbdv-image-wrap">
+        <img alt="Image not available"
+             *ngIf="recipeDetails['imageUrl']"
+             src="{{recipeDetails['imageUrl']}}">
+        <button class="btn wbdv-like-button"
+                *ngIf="!(this.currentUser.username) || !isRecipeLiked"
+                (click)="like()">
+          <i class="fa fa-heart-o wbdv-like-icon"></i>
+        </button>
+        <button class="btn wbdv-liked-button"
+                *ngIf="isRecipeLiked"
+                (click)="unlike()">
+          <i class="fa fa-heart wbdv-liked-icon"></i>
+        </button>
+      </div>
     </div>
     <div class="col-6">
       <h1>
@@ -17,18 +29,18 @@
   </div>
 
   <div class="wbdv-recipe-summary">
-      <div class="wbdv-recipe-summary-item">
-        <span class="value">{{ingredientsCount}}</span>
-        <label>Ingredients</label>
-      </div>
-      <div class="wbdv-recipe-summary-item nutrition" *ngIf="recipeDetails['numberOfServings']">
-        <span class="value">{{recipeDetails['numberOfServings']}}</span>
-        <label>Servings</label>
-      </div>
-      <div class="wbdv-recipe-summary-item">
-        <span class="value">{{totalTime}}</span>
-        <label>{{totalTimeUnit}}</label>
-      </div>
+    <div class="wbdv-recipe-summary-item">
+      <span class="value">{{ingredientsCount}}</span>
+      <label>Ingredients</label>
+    </div>
+    <div class="wbdv-recipe-summary-item nutrition" *ngIf="recipeDetails['numberOfServings']">
+      <span class="value">{{recipeDetails['numberOfServings']}}</span>
+      <label>Servings</label>
+    </div>
+    <div class="wbdv-recipe-summary-item">
+      <span class="value">{{totalTime}}</span>
+      <label>{{totalTimeUnit}}</label>
+    </div>
   </div>
 
   <ul class="list-group wbdv-recipe">
@@ -38,23 +50,13 @@
       {{ingredient}}
     </li>
   </ul>
-  <button class="btn btn-primary"
-          *ngIf="!(this.currentUser.username) || !isRecipeLiked"
-          (click)="like()">
-    Like
-  </button>
-  <button class="btn btn-primary"
-          *ngIf="isRecipeLiked"
-          (click)="unlike()">
-    Unlike
-  </button>
 
   <input class="form-control"
-         placeholder = "Rating from 1-5"
+         placeholder="Rating from 1-5"
          [(ngModel)]="rating">
   <input class="form-control"
          *ngIf="currentUser.role === 'Critic'"
-         placeholder = "Critic's Review"
+         placeholder="Critic's Review"
          [(ngModel)]="criticReview">
   <button (click)="rate(rating,criticReview)"
           class="btn btn-success">

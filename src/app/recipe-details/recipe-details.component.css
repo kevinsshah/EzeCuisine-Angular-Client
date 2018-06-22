@@ -35,3 +35,38 @@
   background-color: #343A40;
   color: white;
 }
+
+.wbdv-image-wrap {
+  display:inline-block;
+  position:relative;
+}
+
+.wbdv-like-button {
+  border-radius: 35px;
+  background-color: #F3F3F3;
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  width: 60px;
+  height: 60px;
+}
+
+.wbdv-like-icon {
+  color: #343A40;
+  font-size: 25px;
+}
+
+.wbdv-liked-button {
+  border-radius: 35px;
+  background-color: #343A40;
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  width: 60px;
+  height: 60px;
+}
+
+.wbdv-liked-icon {
+  color: #e16120;
+  font-size: 25px;
+}
