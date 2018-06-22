@@ -41,6 +41,7 @@ export class RecipeDetailsComponent implements OnInit {
   newReview = '';
   myRatings: Rating[] = [];
   myRatingId = '';
+  alertReview = false;
 
   changeRating(newRating) {
     this.newRating = newRating;
@@ -77,6 +78,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   rate() {
     if (this.currentUser['username']) {
+      this.alertReview = true;
       this
         .ratingService
         .rate(this.recipeId, this.newRating, this.newReview)
@@ -86,7 +88,12 @@ export class RecipeDetailsComponent implements OnInit {
     }
   }
 
+  removeReviewAlert() {
+    this.alertReview = false;
+  }
+
   updateRating() {
+    this.alertReview = true;
     this
       .ratingService
       .updateRating(this.myRatingId, this.newRating, this.newReview)
@@ -124,6 +131,10 @@ export class RecipeDetailsComponent implements OnInit {
         this.reviewedUsers = ratings
           .filter(rating => rating.user.role === 'Critic' && !(rating.user._id === this.currentUser._id));
       });
+  }
+
+  goToUserProfile(username) {
+    this.router.navigate(['/profile/' + username]);
   }
 
   findRecipeById(yummlyId) {
