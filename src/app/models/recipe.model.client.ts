@@ -7,4 +7,5 @@ export class Recipe {
   numberOfServings: number;
   yummlyRating: number;
   yummlyId: string;
+  createdBy: string;
 }

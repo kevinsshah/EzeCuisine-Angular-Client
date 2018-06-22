@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {YummlyServiceClient} from '../services/yummly.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Recipe} from '../models/recipe.model.client';
+import {RecipeServiceClient} from '../services/recipe.service.client';
 
 @Component({
   selector: 'app-search',
@@ -12,13 +14,15 @@ export class SearchComponent implements OnInit {
 
   constructor(private yummlyService: YummlyServiceClient,
               private route: ActivatedRoute,
+              private recipeService: RecipeServiceClient,
               private router: Router) {
     this.route.params.subscribe(params => this.setSearchText(params));
     this.searchRecipes(this.searchText, 1);
   }
 
   searchText = '';
-  results = [];
+  yummlyResults = [];
+  ezeCuisineResults: Recipe[] = [];
   currentPage = 1;
   firstPage = 1;
   lastPage = 0;
@@ -28,6 +32,23 @@ export class SearchComponent implements OnInit {
     this.searchRecipes(this.searchText, 1);
   }
 
+  mergeResults() {
+    const n2 = this.yummlyResults.length;
+    const n1 = this.ezeCuisineResults.length;
+    let i = 0, j = 0, z = 0;
+    const results = [];
+    while (i < n1 && j < n2) {
+      results.push(this.ezeCuisineResults[i]);
+      i += 1;
+      z = 0;
+      while (z < 5 && j < n2) {
+        results.push(this.yummlyResults);
+        j += 1;
+        z += 1;
+      }
+    }
+  }
+
   searchRecipes(input, pageNumber) {
     this.currentPage = pageNumber;
     const query = input.replace('%20', '+');
@@ -35,7 +56,13 @@ export class SearchComponent implements OnInit {
       .findAllRecipes(query, pageNumber)
       .then(results => {
         this.lastPage = Math.ceil(results['totalMatchCount'] / 10);
-        this.results = results['matches'];
+        this.yummlyResults = results['matches'];
+        return this.recipeService
+          .findRecipesBySearchQuery(query);
+      })
+      .then(recipes => {
+        this.ezeCuisineResults = recipes;
+        // this.mergeResults();
       });
   }
 

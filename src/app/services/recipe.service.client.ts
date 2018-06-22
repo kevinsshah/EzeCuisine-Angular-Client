@@ -33,4 +33,9 @@ export class RecipeServiceClient {
       .then(response => response.text())
       .then((text) => text.length ? JSON.parse(text) : {});
   }
+
+  findRecipesBySearchQuery(searchText) {
+    return fetch(this.RECIPE_URL + '/search/' + searchText)
+      .then(response => response.json());
+  }
 }

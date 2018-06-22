@@ -3,7 +3,7 @@
 <div class="container">
   <div>
     <ul class="list-group wbdv-project">
-      <li *ngFor="let result of results"
+      <li *ngFor="let result of yummlyResults"
           (click)="navigate(result.id)"
           class="list-group-item wbdv-group-item">
         <img alt=" "
@@ -15,7 +15,7 @@
   </div>
 
   <div class="wbdv-pagination-component"
-       *ngIf="results.length > 0">
+       *ngIf="yummlyResults.length > 0">
     <button type="button"
             (click)="searchRecipes(searchText, currentPage - 1)"
             [ngClass]="{'disabled':currentPage == firstPage}"
@@ -30,5 +30,21 @@
       Next
     </button>
   </div>
+
+  <div class="wbdv-chefs-special">
+    <h2>Chef's specials</h2>
+    <ul class="list-group wbdv-project">
+      <li *ngFor="let result of ezeCuisineResults"
+          (click)="navigate(result._id)"
+          class="list-group-item wbdv-group-item">
+        <img alt=" "
+             *ngIf="result.imageUrl"
+             src={{result.imageUrl}}>
+        {{result['name']}}
+      </li>
+    </ul>
+  </div>
 </div>
+
+
 
