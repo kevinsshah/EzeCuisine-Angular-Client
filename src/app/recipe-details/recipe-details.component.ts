@@ -49,6 +49,16 @@ export class RecipeDetailsComponent implements OnInit {
     }
   }
 
+  unlike() {
+    this.likeService
+      .unlike(this.recipeId);
+  }
+
+  isLiked() {
+    const likedUserIds = this.likedUsers.map(like => like.user._id);
+    return !(likedUserIds.indexOf(this.currentUser._id) === -1);
+  }
+
   rate(rating, review) {
     if (this.currentUser['username']) {
       this
@@ -99,6 +109,7 @@ export class RecipeDetailsComponent implements OnInit {
           this.recipeDetails = response;
           this.recipeId = response['_id'];
           this.loadRatedUsersForRecipe(this.recipeId);
+          this.loadLikedUsersForRecipe(this.recipeId);
         } else {
           this.yummlyService
             .findRecipeById(yummlyId)

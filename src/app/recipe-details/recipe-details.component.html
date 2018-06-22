@@ -39,8 +39,14 @@
     </li>
   </ul>
   <button class="btn btn-primary"
+          *ngIf="!(this.currentUser.username) || !isLiked()"
           (click)="like()">
     Like
+  </button>
+  <button class="btn btn-primary"
+          *ngIf="isLiked()"
+          (click)="unlike()">
+    Unlike
   </button>
 
   <input class="form-control"
