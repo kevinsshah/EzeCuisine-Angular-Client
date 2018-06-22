@@ -34,7 +34,6 @@
 </nav>
 
 <div class="wbdv-user-info-component">
-  {{user.username}}
   <img src="https://cdn3.iconfinder.com/data/icons/vacation-4/32/vacation_29-512.png"
        *ngIf="user.role === 'Customer'"
        class="center">
@@ -44,12 +43,13 @@
   <img src="http://heritageradionetwork.org/wp-content/uploads/2015/06/commentary.png"
        *ngIf="user.role === 'Critic'"
        class="center">
-  <button class="btn btn-success"
+  {{user.username}}
+  <button class="btn btn-success wbdv-follow"
           *ngIf="!(this.currentUser.username) || !isUserFollowed"
           (click)="follow()">
     Follow
   </button>
-  <button class="btn btn-warning"
+  <button class="btn btn-warning wbdv-unfollow"
           *ngIf="isUserFollowed"
           (click)="unfollow()">
     UnFollow

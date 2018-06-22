@@ -61,6 +61,10 @@
           (click)="navigateToRecipe(likedRecipe)"
           class="list-group-item wbdv-liked-recipe">
         {{likedRecipe.recipe.name}}
+        <button class="btn btn-warning float-right"
+                (click)="unlike(likedRecipe)">
+          Unlike
+        </button>
       </li>
     </ul>
   </div>
@@ -94,6 +98,10 @@
           (click)="navigateToFollowingProfile(following)"
           class="list-group-item wbdv-following">
         {{following.to.username}}
+        <button class="btn btn-warning float-right"
+                (click)="unfollow(following)">
+          Unfollow
+        </button>
       </li>
     </ul>
   </div>

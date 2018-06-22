@@ -43,6 +43,18 @@ export class ProfileComponent implements OnInit {
     this.alertSuccess = false;
   }
 
+  unfollow(following) {
+    this.followService
+      .unfollow(following.to._id)
+      .then(() => this.loadFollowingForUser());
+  }
+
+  unlike(likedRecipe) {
+    this.likeService
+      .unlike(likedRecipe.recipe._id)
+      .then(() => this.loadLikedRecipesForUser());
+  }
+
   navigateToRecipe(likedRecipe) {
     this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
   }
