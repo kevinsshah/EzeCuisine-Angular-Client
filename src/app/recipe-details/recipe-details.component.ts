@@ -101,7 +101,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   setRecipeId(params) {
-    this.yummlyId = params['yummlyId'];
+    this.yummlyId = params['recipeId'];
     this.findRecipeById(this.yummlyId);
 
   }
@@ -138,41 +138,61 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   findRecipeById(yummlyId) {
-    this.recipeService
-      .findRecipeById(yummlyId)
-      .then(response => {
-        if (response['name']) {
-          response['ingredients'] = response['ingredients'].split('\n');
-          this.ingredientsCount = response['ingredients'].length;
-          if (response['totalTime']) {
-            this.totalTime = response['totalTime'].substr(0, response['totalTime'].indexOf(' '));
-            this.totalTimeUnit = response['totalTime'].substr(response['totalTime'].indexOf(' ') + 1);
+    if (yummlyId.startsWith('eze-cuisine-')) {
+      this.recipeService
+        .findRecipeById(yummlyId.substr(12))
+        .then(response => {
+          if (response['name']) {
+            console.log(response);
+            response['ingredients'] = response['ingredients'].split('\n');
+            this.ingredientsCount = response['ingredients'].length;
+            if (response['totalTime']) {
+              this.totalTime = response['totalTime'].substr(0, response['totalTime'].indexOf(' '));
+              this.totalTimeUnit = response['totalTime'].substr(response['totalTime'].indexOf(' ') + 1);
+            }
+            this.recipeDetails = response;
+            this.recipeId = response['_id'];
+            this.loadRatedUsersForRecipe(this.recipeId);
+            this.loadLikedUsersForRecipe(this.recipeId);
           }
-          this.recipeDetails = response;
-          this.recipeId = response['_id'];
-          this.loadRatedUsersForRecipe(this.recipeId);
-          this.loadLikedUsersForRecipe(this.recipeId);
-        } else {
-          this.yummlyService
-            .findRecipeById(yummlyId)
-            .then(result =>
-              this.recipeService
-                .createRecipe(result)
-            )
-            .then(recipe => {
-              if (recipe['ingredients']) {
-                recipe['ingredients'] = recipe['ingredients'].split('\n');
-                if (recipe['totalTime']) {
-                  this.totalTime = recipe['totalTime'].substr(0, recipe['totalTime'].indexOf(' '));
-                  this.totalTimeUnit = recipe['totalTime'].substr(recipe['totalTime'].indexOf(' ') + 1);
+        });
+    } else {
+      this.recipeService
+        .findRecipeByYummlyId(yummlyId)
+        .then(response => {
+          if (response['name']) {
+            response['ingredients'] = response['ingredients'].split('\n');
+            this.ingredientsCount = response['ingredients'].length;
+            if (response['totalTime']) {
+              this.totalTime = response['totalTime'].substr(0, response['totalTime'].indexOf(' '));
+              this.totalTimeUnit = response['totalTime'].substr(response['totalTime'].indexOf(' ') + 1);
+            }
+            this.recipeDetails = response;
+            this.recipeId = response['_id'];
+            this.loadRatedUsersForRecipe(this.recipeId);
+            this.loadLikedUsersForRecipe(this.recipeId);
+          } else {
+            this.yummlyService
+              .findRecipeById(yummlyId)
+              .then(result =>
+                this.recipeService
+                  .createRecipe(result)
+              )
+              .then(recipe => {
+                if (recipe['ingredients']) {
+                  recipe['ingredients'] = recipe['ingredients'].split('\n');
+                  if (recipe['totalTime']) {
+                    this.totalTime = recipe['totalTime'].substr(0, recipe['totalTime'].indexOf(' '));
+                    this.totalTimeUnit = recipe['totalTime'].substr(recipe['totalTime'].indexOf(' ') + 1);
+                  }
+                  this.ingredientsCount = recipe['ingredients'].length;
+                  this.recipeDetails = recipe;
+                  this.recipeId = recipe['_id'];
                 }
-                this.ingredientsCount = recipe['ingredients'].length;
-                this.recipeDetails = recipe;
-                this.recipeId = recipe['_id'];
-              }
-            });
-        }
-      });
+              });
+          }
+        });
+    }
   }
 
   ngOnInit() {

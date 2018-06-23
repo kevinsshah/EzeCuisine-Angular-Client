@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'search/:searchText', component: SearchComponent},
-  { path: 'search/:searchText/:yummlyId', component: RecipeDetailsComponent},
+  { path: 'search/:searchText/:recipeId', component: RecipeDetailsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'profile', component: ProfileComponent},

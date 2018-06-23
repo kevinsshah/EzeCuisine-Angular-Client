@@ -47,8 +47,14 @@ export class RecipeServiceClient {
     }).then(response => response.json());
   }
 
-  findRecipeById(yummyId) {
-    return fetch(this.RECIPE_URL + '/' + yummyId)
+  findRecipeByYummlyId(yummyId) {
+    return fetch(this.RECIPE_URL + '/yummly/' + yummyId)
+      .then(response => response.text())
+      .then((text) => text.length ? JSON.parse(text) : {});
+  }
+
+  findRecipeById(recipeId) {
+    return fetch(this.RECIPE_URL + '/' + recipeId)
       .then(response => response.text())
       .then((text) => text.length ? JSON.parse(text) : {});
   }
