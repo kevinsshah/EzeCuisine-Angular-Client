@@ -32,15 +32,43 @@
     </nav>
   </div>
 
-  <div class="wbdv-selection"
+  <div class="wbdv-selection row"
        *ngIf="selection === 'Manage Users'">
-    <ul class="list-group">
-      <li *ngFor="let user of users"
-          (click)="navigateToProfile(user.username)"
-          class="list-group-item wbdv-user">
-        {{user.username}}
-      </li>
-    </ul>
+
+    <div class="col-4">
+      <h3>Chefs</h3>
+      <ul class="list-group">
+        <li>Chefs</li>
+        <li *ngFor="let chef of chefs"
+            (click)="navigateToProfile(chef.username)"
+            class="list-group-item wbdv-user">
+          {{chef.username}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-4">
+      <h3>Critics</h3>
+      <ul class="list-group">
+        <li *ngFor="let critic of critics"
+            (click)="navigateToProfile(critic.username)"
+            class="list-group-item wbdv-user">
+          {{critic.username}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-4">
+      <h3>Customers</h3>
+      <ul class="list-group">
+        <li *ngFor="let customer of customers"
+            (click)="navigateToProfile(customer.username)"
+            class="list-group-item wbdv-user">
+          {{customer.username}}
+        </li>
+      </ul>
+    </div>
+
   </div>
 
   <div class="wbdv-selection"
