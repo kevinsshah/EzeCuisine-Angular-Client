@@ -294,11 +294,11 @@
           *ngFor="let recipe of createdRecipes"
           (click) = "navigateToEzeRecipe(recipe)">
         {{recipe.name}}
-        <button (click)="openEditModal(content, recipe)"
-                class="btn btn-primary fa fa-pencil float-right">
-        </button>
         <button (click)="deleteRecipe(recipe)"
                 class="btn btn-danger fa fa-trash float-right">
+        </button>
+        <button (click)="openEditModal(content, recipe)"
+                class="btn btn-primary fa fa-pencil float-right">
         </button>
       </li>
     </ul>
