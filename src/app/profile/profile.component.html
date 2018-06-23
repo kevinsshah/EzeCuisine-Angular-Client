@@ -67,7 +67,7 @@
       <li *ngFor="let likedRecipe of likedRecipes"
           (click)="navigateToRecipe(likedRecipe)"
           class="list-group-item wbdv-liked-recipe">
-        {{likedRecipe.recipe.name}}
+        <b>{{likedRecipe.recipe.name}}</b>
         <button class="btn btn-warning float-right"
                 (click)="unlike(likedRecipe)">
           Unlike
@@ -129,7 +129,7 @@
       <li *ngFor="let follower of followers"
           (click)="navigateToFollowerProfile(follower)"
           class="list-group-item wbdv-follower">
-        {{follower.from.username}}
+        <b>{{follower.from.username}}</b>
       </li>
     </ul>
   </div>
@@ -140,7 +140,7 @@
       <li *ngFor="let following of followings"
           (click)="navigateToFollowingProfile(following)"
           class="list-group-item wbdv-following">
-        {{following.to.username}}
+        <b>{{following.to.username}}</b>
         <button class="btn btn-warning float-right"
                 (click)="unfollow(following)">
           Unfollow
@@ -294,7 +294,7 @@
       <li class="list-group-item wbdv-created-recipe"
           *ngFor="let recipe of createdRecipes"
           (click)="navigateToEzeRecipe(recipe)">
-        {{recipe.name}}
+        <b>{{recipe.name}}</b>
         <button (click)="deleteRecipe(recipe)"
                 class="btn btn-danger fa fa-trash float-right">
         </button>
