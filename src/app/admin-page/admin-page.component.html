@@ -42,6 +42,9 @@
             (click)="navigateToProfile(chef.username)"
             class="list-group-item wbdv-user">
           {{chef.username}}
+          <button class="btn btn-danger fa fa-trash float-right"
+                  (click)="deleteUser(chef)">
+          </button>
         </li>
       </ul>
     </div>
@@ -53,6 +56,9 @@
             (click)="navigateToProfile(critic.username)"
             class="list-group-item wbdv-user">
           {{critic.username}}
+          <button class="btn btn-danger fa fa-trash float-right"
+                  (click)="deleteUser(critic)">
+          </button>
         </li>
       </ul>
     </div>
@@ -64,6 +70,9 @@
             (click)="navigateToProfile(customer.username)"
             class="list-group-item wbdv-user">
           {{customer.username}}
+          <button class="btn btn-danger fa fa-trash float-right"
+                  (click)="deleteUser(customer)">
+          </button>
         </li>
       </ul>
     </div>
@@ -77,7 +86,8 @@
       <ul class="list-group">
         <li class="list-group-item wbdv-users-heading">Chef's Special</li>
         <li *ngFor="let chefSpecial of chefSpecials"
-            class="list-group-item wbdv-user">
+            (click)="navigateToRecipe(chefSpecial)"
+            class="list-group-item wbdv-recipe">
           {{chefSpecial.name}}
         </li>
       </ul>
@@ -87,7 +97,8 @@
     <ul class="list-group">
       <li class="list-group-item wbdv-users-heading">Yummly's Special</li>
       <li *ngFor="let yummlySpecial of yummlySpecials"
-          class="list-group-item wbdv-user">
+          (click)="navigateToRecipe(yummlySpecial)"
+          class="list-group-item wbdv-recipe">
         {{yummlySpecial.name}}
       </li>
     </ul>

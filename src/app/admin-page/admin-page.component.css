@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.list-group-item.wbdv-recipe {
+  cursor: pointer;
+}
+
 .container-fluid.wbdv-profile {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -34,4 +38,8 @@
 .wbdv-users-heading {
   background-color: #343A40;
   color: white;
+}
+
+.btn.btn-outline-light {
+  margin-right: 5px;
 }

@@ -80,4 +80,10 @@ export class UserServiceClient {
     return fetch(this.USER_PROFILE_URL + '/' + username)
       .then(response => response.json());
   }
+
+  deleteUser(userId) {
+    return fetch(this.USER_URL  + '/' + userId, {
+      method: 'delete'
+    });
+  }
 }

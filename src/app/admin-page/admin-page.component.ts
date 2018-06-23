@@ -24,6 +24,35 @@ export class AdminPageComponent implements OnInit {
   yummlySpecials: Recipe[] = [];
   selection = 'Manage Users';
 
+  deleteUser(user) {
+    event.stopPropagation();
+    this.recipeService
+      .findCreatedRecipesForUser(user._id)
+      .then((recipes) =>
+        recipes.map(recipe => this.recipeService.deleteRecipe(recipe._id)))
+      .then(() => this.userService.deleteUser(user._id))
+      .then(() => {
+        this.loadAllUsers();
+        this.loadAllRecipes();
+      });
+  }
+
+  navigateToRecipe(recipe) {
+    if (recipe.yummlyId) {
+      this.router.navigate(['search/' + recipe.name + '/' + recipe.yummlyId]);
+    } else {
+      this.router.navigate(['search/' + recipe.name + '/eze-cuisine-' + recipe._id]);
+    }
+  }
+
+  navigateToProfile(username) {
+    this.router.navigate(['profile/' + username]);
+  }
+
+  changeSelection(selection) {
+    this.selection = selection;
+  }
+
   loadAllUsers() {
     this.userService
       .findAllUsers()
@@ -49,14 +78,6 @@ export class AdminPageComponent implements OnInit {
         this.yummlySpecials = allRecipes
           .filter(recipe => !recipe['createdBy']);
       });
-  }
-
-  navigateToProfile(username) {
-    this.router.navigate(['profile/' + username]);
-  }
-
-  changeSelection(selection) {
-    this.selection = selection;
   }
 
   ngOnInit() {
