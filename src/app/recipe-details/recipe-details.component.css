@@ -102,7 +102,7 @@
 .wbdv-rating > input:checked ~ label, /* show gold star when clicked */
 .wbdv-rating:not(:checked) > label:hover, /* hover current star */
 .wbdv-rating:not(:checked) > label:hover ~ label {
-  color: #FFD700;
+  color: #e16120;
 }
 
 /* hover previous stars in list */
@@ -111,7 +111,7 @@
 .wbdv-rating > input:checked ~ label:hover,
 .wbdv-rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .wbdv-rating > input:checked ~ label:hover ~ label {
-  color: #FFED85;
+  color: #ffa577;
 }
 
 .wbdv-rated {
@@ -120,7 +120,7 @@
 }
 
 .wbdv-rated .highlight ~ label {
-  color: #FFD700;
+  color: #e16120;
 }
 
 .wbdv-rated > input {
