@@ -127,9 +127,9 @@ export class RecipeDetailsComponent implements OnInit {
           this.newReview = this.myRatings[0].review;
         }
         this.ratedUsers = ratings
-          .filter(rating => !(rating.user.role === 'Critic' || rating.user._id === this.currentUser._id));
+          .filter(rating => !(rating.user.role === 'Critic'));
         this.reviewedUsers = ratings
-          .filter(rating => rating.user.role === 'Critic' && !(rating.user._id === this.currentUser._id));
+          .filter(rating => rating.user.role === 'Critic');
       });
   }
 
@@ -143,7 +143,6 @@ export class RecipeDetailsComponent implements OnInit {
         .findRecipeById(yummlyId.substr(12))
         .then(response => {
           if (response['name']) {
-            console.log(response);
             response['ingredients'] = response['ingredients'].split('\n');
             this.ingredientsCount = response['ingredients'].length;
             if (response['totalTime']) {

@@ -74,7 +74,11 @@ export class ProfileComponent implements OnInit {
   }
 
   navigateToRecipe(likedRecipe) {
-    this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
+    if (likedRecipe.recipe.yummlyId) {
+      this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
+    } else {
+      this.router.navigate(['search/' + likedRecipe.recipe.name + '/eze-cuisine-' + likedRecipe.recipe._id]);
+    }
   }
 
   navigateToFollowerProfile(follower) {
