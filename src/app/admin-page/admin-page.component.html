@@ -38,11 +38,11 @@
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title"
-            *ngIf="!newRecipe._id">
+            *ngIf="!newUser._id">
           Create a user
         </h4>
         <h4 class="modal-title"
-            *ngIf="newRecipe._id">
+            *ngIf="newUser._id">
           Update a user
         </h4>
         <button type="button"
@@ -56,6 +56,7 @@
         <div class="form-group">
           <label>Username</label>
           <input [(ngModel)]="newUser.username"
+                 [readonly]="newUser.username"
                  placeholder="username"
                  class="form-control"/>
         </div>
@@ -63,6 +64,7 @@
         <div class="form-group">
           <label>Password</label>
           <input [(ngModel)]="newUser.password"
+                 [readonly]="newUser.username"
                  placeholder="password"
                  type="password"
                  class="form-control"/>
@@ -101,9 +103,15 @@
         </div>
 
         <button (click)="createUser()"
-                *ngIf="!newRecipe._id"
+                *ngIf="!newUser._id"
                 class="btn btn-dark btn-block">
           Add
+        </button>
+
+        <button (click)="updateUser()"
+                *ngIf="newUser._id"
+                class="btn btn-dark btn-block">
+          Update
         </button>
       </div>
       <div class="modal-footer">
@@ -130,6 +138,9 @@
           <button class="btn btn-danger fa fa-trash float-right"
                   (click)="deleteUser(chef)">
           </button>
+          <button class="btn btn-primary fa fa-pencil float-right"
+                  (click)="openEditUserModal(content, chef)">
+          </button>
         </li>
       </ul>
     </div>
@@ -144,6 +155,9 @@
           <button class="btn btn-danger fa fa-trash float-right"
                   (click)="deleteUser(critic)">
           </button>
+          <button class="btn btn-primary fa fa-pencil float-right"
+                  (click)="openEditUserModal(content, critic)">
+          </button>
         </li>
       </ul>
     </div>
@@ -157,6 +171,9 @@
           {{customer.username}}
           <button class="btn btn-danger fa fa-trash float-right"
                   (click)="deleteUser(customer)">
+          </button>
+          <button class="btn btn-primary fa fa-pencil float-right"
+                  (click)="openEditUserModal(content, customer)">
           </button>
         </li>
       </ul>

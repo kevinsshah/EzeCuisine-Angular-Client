@@ -67,6 +67,16 @@ export class UserServiceClient {
     }).then(response => response.json());
   }
 
+  updateUserByAdmin(user) {
+    return fetch(this.ADMIN_USER_URL + '/' + user._id, {
+      body: JSON.stringify(user),
+      method: 'put',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json());
+  }
+
   profile() {
     return fetch(this.USER_PROFILE_URL,
       {

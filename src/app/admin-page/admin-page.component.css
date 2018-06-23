@@ -43,3 +43,11 @@
 .btn.btn-outline-light {
   margin-right: 5px;
 }
+
+.btn.btn-danger.fa.fa-trash {
+  margin-right: 5px;
+}
+
+.btn.btn-primary.fa.fa-pencil {
+  margin-right: 5px;
+}

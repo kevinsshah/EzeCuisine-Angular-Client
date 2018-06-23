@@ -52,6 +52,15 @@ export class AdminPageComponent implements OnInit {
       });
   }
 
+  updateUser() {
+    this.userService
+      .updateUserByAdmin(this.newUser)
+      .then(() => {
+        this.loadAllUsers();
+        this.modalReference.close();
+      });
+  }
+
   navigateToRecipe(recipe) {
     if (recipe.yummlyId) {
       this.router.navigate(['search/' + recipe.name + '/' + recipe.yummlyId]);
@@ -80,10 +89,11 @@ export class AdminPageComponent implements OnInit {
   openAddUserModal(content) {
     event.stopPropagation();
     this.newUser = new User();
+    this.newUser['role'] = '';
     this.open(content);
   }
 
-  openEditRecipeModal(content, user) {
+  openEditUserModal(content, user) {
     event.stopPropagation();
     this.newUser = user;
     this.open(content);
