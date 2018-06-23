@@ -85,6 +85,9 @@ export class UserProfileComponent implements OnInit {
       .userService
       .profileOfUser(username)
       .then(user => {
+        if (user.role === 'Admin') {
+          this.router.navigate(['profile']);
+        }
         this.user = user;
         this.loadLikedRecipesForUser();
         this.loadRatedRecipesForUser();
