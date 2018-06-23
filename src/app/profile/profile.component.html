@@ -234,7 +234,7 @@
         </div>
 
         <div class="form-group">
-          <label>ImageUrl</label>
+          <label>ImageUrl (Provide 360x360 image size for quality user experience)</label>
           <input [(ngModel)]="newRecipe.imageUrl"
                  placeholder="image url of recipe"
                  class="form-control"/>
@@ -274,6 +274,9 @@
           *ngFor="let recipe of createdRecipes"
           (click) = "navigateToEzeRecipe(recipe)">
         {{recipe.name}}
+        <button (click)="deleteRecipe(recipe)"
+                class="btn btn-danger fa fa-trash float-right">
+        </button>
       </li>
     </ul>
   </div>

@@ -59,6 +59,13 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  deleteRecipe(recipe) {
+    event.stopPropagation();
+    this.recipeService
+      .deleteRecipe(recipe._id)
+      .then(() => this.loadCreatedRecipes());
+  }
+
   unfollow(following) {
     event.stopPropagation();
     this.followService

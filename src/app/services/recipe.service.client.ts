@@ -75,4 +75,10 @@ export class RecipeServiceClient {
       .replace('UID', userId))
       .then(response => response.json());
   }
+
+  deleteRecipe(recipeId) {
+    return fetch(this.RECIPE_URL + '/' + recipeId, {
+      method: 'delete'
+    });
+  }
 }
