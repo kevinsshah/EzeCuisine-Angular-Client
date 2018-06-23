@@ -5,6 +5,11 @@
   z-index: 2;
 }
 
+.wbdv-username {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
 .list-group.wbdv-profile {
   margin-top: 20px;
 }
@@ -19,6 +24,10 @@
 
 .btn.btn-warning.wbdv-unfollow {
   margin-left: 15px;
+}
+
+.wbdv-user-info-component {
+  padding-top: 60px;
 }
 
 .container-fluid.wbdv-profile {
@@ -74,10 +83,6 @@
 
 .list-group-item.wbdv-following {
   cursor: pointer;
-}
-
-a.wbdv-username-anchor{
-  color: white;
 }
 
 .wbdv-rated {

@@ -188,6 +188,9 @@ export class ProfileComponent implements OnInit {
       .profile()
       .then(user => {
         if (user['username']) {
+          if (user.role === 'Admin') {
+            this.selection = 'Manage Users';
+          }
           this.user = user;
           this.loadLikedRecipesForUser();
           this.loadRatedRecipesForUser();

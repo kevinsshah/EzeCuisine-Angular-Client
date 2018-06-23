@@ -12,19 +12,20 @@
         Home
       </button>
     </a>
-    <a routerLink="/admin">
-      <button class="btn btn-outline-light my-2 my-sm-0"
-              *ngIf="user['role'] === 'Admin'"
-              type="button">
-        Admin Page
-      </button>
-    </a>
+    <!--<a routerLink="/admin">-->
+    <!--<button class="btn btn-outline-light my-2 my-sm-0"-->
+    <!--*ngIf="user['role'] === 'Admin'"-->
+    <!--type="button">-->
+    <!--Admin Page-->
+    <!--</button>-->
+    <!--</a>-->
   </form>
 </nav>
 
 <div class="container-fluid wbdv-profile">
 
-  <div class="wbdv-nav">
+  <div class="wbdv-nav"
+       *ngIf="user.role !== 'Admin'">
     <nav class="nav nav-pills nav-justified">
       <div class="nav-item nav-link"
            [ngClass]="{active: selection === 'Liked Recipes'}"
@@ -56,6 +57,28 @@
            *ngIf="user.role === 'Chef'"
            (click)="changeSelection('Your Recipes')">
         Your Recipes
+      </div>
+    </nav>
+  </div>
+
+  <div class="wbdv-nav"
+       *ngIf="user.role === 'Admin'">
+    <nav class="nav nav-pills nav-justified">
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Manage Users'}"
+           (click)="changeSelection('Manage Users')">
+        Manage Users
+      </div>
+
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Manage Recipes'}"
+           (click)="changeSelection('Manage Recipes')">
+        Manage Recipes
+      </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Update Profile'}"
+           (click)="changeSelection('Update Profile')">
+        Update Profile
       </div>
     </nav>
   </div>
@@ -292,7 +315,7 @@
     <ul class="list-group">
       <li class="list-group-item wbdv-created-recipe"
           *ngFor="let recipe of createdRecipes"
-          (click) = "navigateToEzeRecipe(recipe)">
+          (click)="navigateToEzeRecipe(recipe)">
         {{recipe.name}}
         <button (click)="deleteRecipe(recipe)"
                 class="btn btn-danger fa fa-trash float-right">

@@ -138,6 +138,10 @@ export class UserProfileComponent implements OnInit {
     this.selection = selection;
   }
 
+  goToProfile() {
+    this.router.navigate(['profile']);
+  }
+
   ngOnInit() {
     this
       .userService
