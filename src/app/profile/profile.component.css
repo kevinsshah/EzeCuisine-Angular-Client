@@ -94,3 +94,11 @@
 .btn.btn-primary.fa.fa-pencil {
   margin-right: 5px;
 }
+
+.row {
+  width: 100%;
+}
+
+.col-11.wbdv-search-input {
+  padding-right: 0px;
+}

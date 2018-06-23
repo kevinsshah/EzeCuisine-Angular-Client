@@ -38,6 +38,7 @@ export class UserProfileComponent implements OnInit {
   selection = 'Liked Recipes';
   isUserFollowed = false;
   createdRecipes: Recipe[] = [];
+  searchText = '';
 
   follow() {
     if (this.currentUser['username']) {

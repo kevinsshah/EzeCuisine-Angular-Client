@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
   createdRecipes: Recipe[] = [];
   closeResult: string;
   modalReference: NgbModalRef;
+  searchText = '';
 
   logout() {
     this.userService
@@ -87,6 +88,10 @@ export class ProfileComponent implements OnInit {
     this.likeService
       .unlike(likedRecipe.recipe._id)
       .then(() => this.loadLikedRecipesForUser());
+  }
+
+  navigate(searchText) {
+    this.router.navigate(['search/' + searchText]);
   }
 
   navigateToRecipe(likedRecipe) {

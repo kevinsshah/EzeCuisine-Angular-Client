@@ -116,3 +116,11 @@
   width: 100%;
   word-wrap: break-word;
 }
+
+.row {
+  width: 100%;
+}
+
+.col-11.wbdv-search-input {
+  padding-right: 0px;
+}
