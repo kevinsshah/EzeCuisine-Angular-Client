@@ -29,6 +29,7 @@ export class AdminPageComponent implements OnInit {
   newUser: User = new User();
   modalReference: NgbModalRef;
   closeResult: string;
+  alertUsername = false;
 
   deleteUser(user) {
     event.stopPropagation();
@@ -44,11 +45,17 @@ export class AdminPageComponent implements OnInit {
   }
 
   createUser() {
+    this.alertUsername = false;
     this.userService
       .createUserByAdmin(this.newUser)
-      .then(() => {
-        this.loadAllUsers();
-        this.modalReference.close();
+      .then((user) => {
+        if (user.username) {
+          this.loadAllUsers();
+          this.modalReference.close();
+          this.alertUsername = false;
+        } else {
+          this.alertUsername = true;
+        }
       });
   }
 
@@ -57,6 +64,26 @@ export class AdminPageComponent implements OnInit {
       .updateUserByAdmin(this.newUser)
       .then(() => {
         this.loadAllUsers();
+        this.modalReference.close();
+      });
+  }
+
+  createRecipe() {
+
+  }
+
+  deleteRecipe(recipe) {
+    event.stopPropagation();
+    this.recipeService
+      .deleteRecipe(recipe._id)
+      .then(() => this.loadAllRecipes());
+  }
+
+  updateRecipe() {
+    this.recipeService
+      .updateRecipe(this.newRecipe)
+      .then(() => {
+        this.loadAllRecipes();
         this.modalReference.close();
       });
   }
@@ -89,13 +116,18 @@ export class AdminPageComponent implements OnInit {
   openAddUserModal(content) {
     event.stopPropagation();
     this.newUser = new User();
+    this.newRecipe = new Recipe();
     this.newUser['role'] = '';
     this.open(content);
   }
 
-  openEditUserModal(content, user) {
+  openEditModal(content, entity) {
     event.stopPropagation();
-    this.newUser = user;
+    if ( entity['username']) {
+      this.newUser = entity;
+    } else {
+      this.newRecipe = entity;
+    }
     this.open(content);
   }
 
@@ -107,6 +139,10 @@ export class AdminPageComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  removeUsernameAlert() {
+    this.alertUsername = false;
   }
 
   loadAllUsers() {
