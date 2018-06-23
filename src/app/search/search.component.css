@@ -1,3 +1,7 @@
+.wbdv-container {
+  margin-bottom: 30px;
+}
+
 .list-group.wbdv-project {
   margin-top: 15px;
 }
@@ -12,6 +16,8 @@
 
 img {
   margin-right: 5px;
+  width: 90px;
+  height: 60px;
 }
 
 .wbdv-group-item {

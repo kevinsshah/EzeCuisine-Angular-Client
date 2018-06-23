@@ -70,6 +70,10 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['search/' + this.searchText + '/' + yummlyId]);
   }
 
+  navigateEze(ezeId) {
+    this.router.navigate(['search/' + this.searchText + '/eze-cuisine-' + ezeId]);
+  }
+
   ngOnInit() {
   }
 }

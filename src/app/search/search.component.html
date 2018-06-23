@@ -1,6 +1,6 @@
 <app-search-bar></app-search-bar>
 
-<div class="container">
+<div class="container wbdv-container">
   <div>
     <ul class="list-group wbdv-project">
       <li *ngFor="let result of yummlyResults"
@@ -35,7 +35,7 @@
     <h2>Chef's specials</h2>
     <ul class="list-group wbdv-project">
       <li *ngFor="let result of ezeCuisineResults"
-          (click)="navigate(result._id)"
+          (click)="navigateEze(result._id)"
           class="list-group-item wbdv-group-item">
         <img alt=" "
              *ngIf="result.imageUrl"
