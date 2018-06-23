@@ -32,7 +32,7 @@
   </div>
 
   <div class="wbdv-chefs-special">
-    <h2>Chef's specials</h2>
+    <h2>Chef's specials ({{ezeCuisineResults.length}})</h2>
     <ul class="list-group wbdv-project">
       <li *ngFor="let result of ezeCuisineResults"
           (click)="navigateEze(result._id)"

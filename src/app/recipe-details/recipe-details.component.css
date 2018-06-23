@@ -149,3 +149,8 @@
   width: 100%;
   word-wrap: break-word;
 }
+
+img {
+  width: 360px;
+  height: 360px;
+}
