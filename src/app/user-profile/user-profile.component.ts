@@ -87,6 +87,10 @@ export class UserProfileComponent implements OnInit {
       this.router.navigate(['search/' + likedRecipe.recipe.name + '/eze-cuisine-' + likedRecipe.recipe._id]);
     }  }
 
+  navigateToEzeRecipe(createdRecipe) {
+    this.router.navigate(['search/' + createdRecipe.name + '/eze-cuisine-' + createdRecipe._id]);
+  }
+
   navigateToFollowerProfile(follower) {
     this.router.navigate(['profile/' + follower.from.username]);
   }

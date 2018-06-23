@@ -81,6 +81,10 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  navigateToEzeRecipe(createdRecipe) {
+    this.router.navigate(['search/' + createdRecipe.name + '/eze-cuisine-' + createdRecipe._id]);
+  }
+
   navigateToFollowerProfile(follower) {
     this.router.navigate(['profile/' + follower.from.username]);
   }

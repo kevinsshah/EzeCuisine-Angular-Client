@@ -172,8 +172,9 @@
   <div class="wbdv-selection"
        *ngIf="selection === 'Your Recipes'">
     <ul class="list-group">
-      <li class="list-group-item"
-          *ngFor="let recipe of createdRecipes">
+      <li class="list-group-item wbdv-created-recipe"
+          *ngFor="let recipe of createdRecipes"
+          (click)="navigateToEzeRecipe(recipe)">
         {{recipe.name}}
       </li>
     </ul>

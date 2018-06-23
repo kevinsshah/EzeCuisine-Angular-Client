@@ -57,6 +57,10 @@
   cursor: pointer;
 }
 
+.list-group-item.wbdv-created-recipe {
+  cursor: pointer;
+}
+
 .list-group-item.wbdv-follower {
   cursor: pointer;
 }
