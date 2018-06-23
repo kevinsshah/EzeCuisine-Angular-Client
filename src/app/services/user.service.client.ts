@@ -6,6 +6,7 @@ export class UserServiceClient {
   VARIABLE_URL = this.LOCAL_URL;
 
   USER_URL = this.VARIABLE_URL + '/api/user';
+  ADMIN_USER_URL = this.VARIABLE_URL + '/api/admin/user';
   USER_PROFILE_URL = this.VARIABLE_URL + '/api/profile';
   USER_LOGIN_URL = this.VARIABLE_URL + '/api/login';
   USER_LOGOUT_URL = this.VARIABLE_URL + '/api/logout';
@@ -49,6 +50,16 @@ export class UserServiceClient {
     return fetch(this.USER_URL, {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
+      method: 'post',
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(response => response.json());
+  }
+
+  createUserByAdmin(user) {
+    return fetch(this.ADMIN_USER_URL, {
+      body: JSON.stringify(user),
       method: 'post',
       headers: {
         'content-type': 'application/json'

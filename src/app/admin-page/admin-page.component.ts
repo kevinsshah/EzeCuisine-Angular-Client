@@ -4,6 +4,7 @@ import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 import {RecipeServiceClient} from '../services/recipe.service.client';
 import {Recipe} from '../models/recipe.model.client';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-admin-page',
@@ -14,6 +15,7 @@ export class AdminPageComponent implements OnInit {
 
   constructor(private userService: UserServiceClient,
               private recipeService: RecipeServiceClient,
+              private modalService: NgbModal,
               private router: Router) {
   }
 
@@ -23,6 +25,10 @@ export class AdminPageComponent implements OnInit {
   chefSpecials: Recipe[] = [];
   yummlySpecials: Recipe[] = [];
   selection = 'Manage Users';
+  newRecipe: Recipe = new Recipe();
+  newUser: User = new User();
+  modalReference: NgbModalRef;
+  closeResult: string;
 
   deleteUser(user) {
     event.stopPropagation();
@@ -34,6 +40,15 @@ export class AdminPageComponent implements OnInit {
       .then(() => {
         this.loadAllUsers();
         this.loadAllRecipes();
+      });
+  }
+
+  createUser() {
+    this.userService
+      .createUserByAdmin(this.newUser)
+      .then(() => {
+        this.loadAllUsers();
+        this.modalReference.close();
       });
   }
 
@@ -51,6 +66,37 @@ export class AdminPageComponent implements OnInit {
 
   changeSelection(selection) {
     this.selection = selection;
+  }
+
+  open(content) {
+    this.modalReference = this.modalService.open(content, { size : 'lg'});
+    this.modalReference.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  openAddUserModal(content) {
+    event.stopPropagation();
+    this.newUser = new User();
+    this.open(content);
+  }
+
+  openEditRecipeModal(content, user) {
+    event.stopPropagation();
+    this.newUser = user;
+    this.open(content);
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
   loadAllUsers() {
@@ -81,8 +127,8 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.newUser.role = '';
     this.loadAllUsers();
     this.loadAllRecipes();
   }
-
 }
