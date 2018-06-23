@@ -28,6 +28,7 @@ export class UserProfileComponent implements OnInit {
     this.route.params.subscribe(params =>  this.loadUser(params['username']));
   }
 
+  username = '';
   currentUser: User = new User();
   user: User = new User();
   likedRecipes: Like[] = [];
@@ -67,6 +68,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   loadUser(username) {
+    this.username = username;
     this
       .userService
       .profileOfUser(username)
@@ -142,6 +144,11 @@ export class UserProfileComponent implements OnInit {
       .profile()
       .then(user => {
         this.currentUser = user;
+      })
+      .then(() => {
+        if (this.currentUser.username === this.username) {
+          this.router.navigate(['profile']);
+        }
       });
   }
 }
