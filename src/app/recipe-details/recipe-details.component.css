@@ -1,6 +1,7 @@
 .container {
   margin-bottom: 1.25em;
   margin-top: 1.25em;
+  padding-top: 60px;
 }
 
 .wbdv-recipe {
@@ -49,7 +50,7 @@
   right: 10px;
   width: 60px;
   height: 60px;
-  z-index: 12;
+  z-index: 1;
 }
 
 .wbdv-like-icon {

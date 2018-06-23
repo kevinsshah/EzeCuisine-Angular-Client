@@ -1,3 +1,10 @@
+.wbdv-navbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 2;
+}
+
 .list-group.wbdv-profile {
   margin-top: 20px;
 }
@@ -10,6 +17,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   width: 90%;
+  padding-top: 50px;
 }
 
 .wbdv-nav {
@@ -77,4 +85,12 @@
   white-space: normal;
   width: 100%;
   word-wrap: break-word;
+}
+
+.btn.btn-danger.fa.fa-trash {
+  margin-right: 5px;
+}
+
+.btn.btn-primary.fa.fa-pencil {
+  margin-right: 5px;
 }
