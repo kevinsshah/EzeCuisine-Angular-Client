@@ -69,6 +69,18 @@ export class UserProfileComponent implements OnInit {
 
   loadUser(username) {
     this.username = username;
+    this.selection = 'Liked Recipes';
+    this
+      .userService
+      .profile()
+      .then(user => {
+        this.currentUser = user;
+      })
+      .then(() => {
+        if (this.currentUser.username === this.username) {
+          this.router.navigate(['profile']);
+        }
+      });
     this
       .userService
       .profileOfUser(username)
@@ -142,17 +154,5 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['profile']);
   }
 
-  ngOnInit() {
-    this
-      .userService
-      .profile()
-      .then(user => {
-        this.currentUser = user;
-      })
-      .then(() => {
-        if (this.currentUser.username === this.username) {
-          this.router.navigate(['profile']);
-        }
-      });
-  }
+  ngOnInit() {}
 }
