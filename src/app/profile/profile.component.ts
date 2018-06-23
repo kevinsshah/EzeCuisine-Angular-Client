@@ -66,6 +66,15 @@ export class ProfileComponent implements OnInit {
       .then(() => this.loadCreatedRecipes());
   }
 
+  updateRecipe() {
+    this.recipeService
+      .updateRecipe(this.newRecipe)
+      .then(() => {
+        this.loadCreatedRecipes();
+        this.modalReference.close();
+      });
+  }
+
   unfollow(following) {
     event.stopPropagation();
     this.followService
@@ -119,6 +128,18 @@ export class ProfileComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  openAddModal(content) {
+    event.stopPropagation();
+    this.newRecipe = new Recipe();
+    this.open(content);
+  }
+
+  openEditModal(content, recipe) {
+    event.stopPropagation();
+    this.newRecipe = recipe;
+    this.open(content);
   }
 
   private getDismissReason(reason: any): string {

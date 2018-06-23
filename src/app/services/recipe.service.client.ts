@@ -81,4 +81,14 @@ export class RecipeServiceClient {
       method: 'delete'
     });
   }
+
+  updateRecipe(newRecipe) {
+    return fetch(this.RECIPE_URL + '/' + newRecipe._id, {
+      method: 'put',
+      body: JSON.stringify(newRecipe),
+      headers: {
+        'content-type' : 'application/json'
+      }
+    });
+  }
 }

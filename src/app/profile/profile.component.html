@@ -212,8 +212,18 @@
 
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <h4 class="modal-title">Create your own recipe</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <h4 class="modal-title"
+            *ngIf="!newRecipe._id">
+          Create your own recipe
+        </h4>
+        <h4 class="modal-title"
+            *ngIf="newRecipe._id">
+          Update your own recipe
+        </h4>
+        <button type="button"
+                class="close"
+                aria-label="Close"
+                (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -255,17 +265,27 @@
         </div>
 
         <button (click)="createRecipe()"
+                *ngIf="!newRecipe._id"
                 class="btn btn-dark btn-block">
           Add
         </button>
+        <button (click)="updateRecipe()"
+                *ngIf="newRecipe._id"
+                class="btn btn-dark btn-block">
+          Update
+        </button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+        <button type="button"
+                class="btn btn-light"
+                (click)="c('Close click')">
+          Close
+        </button>
       </div>
     </ng-template>
 
     <button class="btn btn-dark btn-block mb-2 mr-2"
-            (click)="open(content)">
+            (click)="openAddModal(content)">
       Add a recipe
     </button>
 
@@ -274,6 +294,9 @@
           *ngFor="let recipe of createdRecipes"
           (click) = "navigateToEzeRecipe(recipe)">
         {{recipe.name}}
+        <button (click)="openEditModal(content, recipe)"
+                class="btn btn-primary fa fa-pencil float-right">
+        </button>
         <button (click)="deleteRecipe(recipe)"
                 class="btn btn-danger fa fa-trash float-right">
         </button>
