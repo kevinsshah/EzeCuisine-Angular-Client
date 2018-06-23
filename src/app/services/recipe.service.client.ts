@@ -76,6 +76,11 @@ export class RecipeServiceClient {
       .then(response => response.json());
   }
 
+  findAllRecipes() {
+    return fetch(this.RECIPE_URL)
+      .then(response => response.json());
+  }
+
   deleteRecipe(recipeId) {
     return fetch(this.RECIPE_URL + '/' + recipeId, {
       method: 'delete'

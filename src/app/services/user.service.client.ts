@@ -27,6 +27,11 @@ export class UserServiceClient {
     }).then(response => response.json());
   }
 
+  findAllUsers() {
+    return fetch(this.USER_URL)
+      .then(response => response.json());
+  }
+
   logout() {
     return fetch(this.USER_LOGOUT_URL, {
       method: 'post',
