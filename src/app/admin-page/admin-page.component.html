@@ -36,9 +36,8 @@
        *ngIf="selection === 'Manage Users'">
 
     <div class="col-4">
-      <h3>Chefs</h3>
       <ul class="list-group">
-        <li>Chefs</li>
+        <li class="list-group-item wbdv-users-heading">Chefs</li>
         <li *ngFor="let chef of chefs"
             (click)="navigateToProfile(chef.username)"
             class="list-group-item wbdv-user">
@@ -48,8 +47,8 @@
     </div>
 
     <div class="col-4">
-      <h3>Critics</h3>
       <ul class="list-group">
+        <li class="list-group-item wbdv-users-heading">Critics</li>
         <li *ngFor="let critic of critics"
             (click)="navigateToProfile(critic.username)"
             class="list-group-item wbdv-user">
@@ -59,8 +58,8 @@
     </div>
 
     <div class="col-4">
-      <h3>Customers</h3>
       <ul class="list-group">
+        <li class="list-group-item wbdv-users-heading">Customers</li>
         <li *ngFor="let customer of customers"
             (click)="navigateToProfile(customer.username)"
             class="list-group-item wbdv-user">
@@ -71,12 +70,25 @@
 
   </div>
 
-  <div class="wbdv-selection"
+  <div class="wbdv-selection row"
        *ngIf="selection === 'Manage Recipes'">
+
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item wbdv-users-heading">Chef's Special</li>
+        <li *ngFor="let chefSpecial of chefSpecials"
+            class="list-group-item wbdv-user">
+          {{chefSpecial.name}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-6">
     <ul class="list-group">
-      <li *ngFor="let recipe of recipes"
+      <li class="list-group-item wbdv-users-heading">Yummly's Special</li>
+      <li *ngFor="let yummlySpecial of yummlySpecials"
           class="list-group-item wbdv-user">
-        {{recipe.name}}
+        {{yummlySpecial.name}}
       </li>
     </ul>
   </div>

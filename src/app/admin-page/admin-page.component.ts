@@ -20,7 +20,8 @@ export class AdminPageComponent implements OnInit {
   chefs: User[] = [];
   critics: User[] = [];
   customers: User[] = [];
-  recipes: Recipe[] = [];
+  chefSpecials: Recipe[] = [];
+  yummlySpecials: Recipe[] = [];
   selection = 'Manage Users';
 
   loadAllUsers() {
@@ -42,7 +43,12 @@ export class AdminPageComponent implements OnInit {
     this.recipeService
       .findAllRecipes()
       .then(recipes => {
-        this.recipes = recipes});
+        const allRecipes = recipes;
+        this.chefSpecials = allRecipes
+          .filter(recipe => recipe['createdBy']);
+        this.yummlySpecials = allRecipes
+          .filter(recipe => !recipe['createdBy']);
+      });
   }
 
   navigateToProfile(username) {
