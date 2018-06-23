@@ -18,18 +18,18 @@ export class HomeComponent implements OnInit {
   slides = [
     {
       imageSrc: 'http://www.hhdenver.com/data1/images/fullhdwallpaperfood65.jpg',
-      mainHeading: 'Main heading',
-      subHeading: 'Sub heading'
+      mainHeading: 'OUR RECIPES',
+      subHeading: 'Tried, tested, tasted and reviewed by the best of critics and our thousands of customers and chefs'
     },
     {
       imageSrc: 'https://dmkz2i5qfmsty.cloudfront.net/aa7c2b48-6a24-4cf1-81de-682a0ed78ed3.jpg',
-      mainHeading: 'Main heading',
-      subHeading: 'Sub heading'
+      mainHeading: 'OUR SERVICE',
+      subHeading: 'The best on east coast, and it\'s absolutely free throughout your lifetime!'
     },
     {
       imageSrc: 'http://www.gettwistedmeals.com/photos/IMG-0569.jpg?autorotate=true&mode=crop&scale=both&quality=50&width=1600&height=700',
-      mainHeading: 'Main heading',
-      subHeading: 'Sub heading'
+      mainHeading: 'OUR VARIETY',
+      subHeading: 'We bring to you thousands of recipes with a plethora of eze cuisines'
     }
   ];
 
