@@ -97,6 +97,10 @@ export class UserProfileComponent implements OnInit {
       });
   }
 
+  navigate(searchText) {
+    this.router.navigate(['search/' + searchText]);
+  }
+
   navigateToRecipe(likedRecipe) {
     if (likedRecipe.recipe.yummlyId) {
       this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
