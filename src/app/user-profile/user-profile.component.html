@@ -44,7 +44,7 @@
        class="center">
   {{user.username}}
   <button class="btn btn-success wbdv-follow"
-          *ngIf="!(this.currentUser.username) || !isUserFollowed"
+          *ngIf="!(currentUser.username) || !isUserFollowed && currentUser.role !== 'Admin'"
           (click)="follow()">
     Follow
   </button>
