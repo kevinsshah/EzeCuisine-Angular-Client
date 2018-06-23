@@ -15,3 +15,42 @@
     </a>
   </form>
 </nav>
+
+<div class="container-fluid wbdv-profile">
+  <div class="wbdv-nav">
+    <nav class="nav nav-pills nav-justified">
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Manage Users'}"
+           (click)="changeSelection('Manage Users')">
+        Manage Users
+      </div>
+      <div class="nav-item nav-link"
+           [ngClass]="{active: selection === 'Manage Recipes'}"
+           (click)="changeSelection('Manage Recipes')">
+        Manage Recipes
+      </div>
+    </nav>
+  </div>
+
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Manage Users'">
+    <ul class="list-group">
+      <li *ngFor="let user of users"
+          (click)="navigateToProfile(user.username)"
+          class="list-group-item wbdv-user">
+        {{user.username}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="wbdv-selection"
+       *ngIf="selection === 'Manage Recipes'">
+    <ul class="list-group">
+      <li *ngFor="let recipe of recipes"
+          class="list-group-item wbdv-user">
+        {{recipe.name}}
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -12,13 +12,13 @@
         Home
       </button>
     </a>
-    <!--<a routerLink="/admin">-->
-    <!--<button class="btn btn-outline-light my-2 my-sm-0"-->
-    <!--*ngIf="user['role'] === 'Admin'"-->
-    <!--type="button">-->
-    <!--Admin Page-->
-    <!--</button>-->
-    <!--</a>-->
+    <a routerLink="/admin">
+    <button class="btn btn-outline-light my-2 my-sm-0"
+    *ngIf="user['role'] === 'Admin'"
+    type="button">
+    Admin Page
+    </button>
+    </a>
   </form>
 </nav>
 
@@ -48,32 +48,10 @@
         Following
       </div>
       <div class="nav-item nav-link"
-           [ngClass]="{active: selection === 'Update Profile'}"
-           (click)="changeSelection('Update Profile')">
-        Update Profile
-      </div>
-      <div class="nav-item nav-link"
            [ngClass]="{active: selection === 'Your Recipes'}"
            *ngIf="user.role === 'Chef'"
            (click)="changeSelection('Your Recipes')">
         Your Recipes
-      </div>
-    </nav>
-  </div>
-
-  <div class="wbdv-nav"
-       *ngIf="user.role === 'Admin'">
-    <nav class="nav nav-pills nav-justified">
-      <div class="nav-item nav-link"
-           [ngClass]="{active: selection === 'Manage Users'}"
-           (click)="changeSelection('Manage Users')">
-        Manage Users
-      </div>
-
-      <div class="nav-item nav-link"
-           [ngClass]="{active: selection === 'Manage Recipes'}"
-           (click)="changeSelection('Manage Recipes')">
-        Manage Recipes
       </div>
       <div class="nav-item nav-link"
            [ngClass]="{active: selection === 'Update Profile'}"
@@ -172,7 +150,7 @@
   </div>
 
   <div class="wbdv-selection"
-       *ngIf="selection === 'Update Profile'">
+       *ngIf="selection === 'Update Profile' || user.role === 'Admin'">
     <div class="alert alert-success alert-dismissible fade show"
          role="alert"
          *ngIf="alertSuccess == true">
@@ -326,5 +304,6 @@
       </li>
     </ul>
   </div>
+
 </div>
 
