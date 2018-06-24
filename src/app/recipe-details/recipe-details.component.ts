@@ -104,7 +104,9 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   getImageUrl() {
-    return 'url(' + this.recipeDetails['imageUrl'] + ')';
+    if (this.recipeDetails['imageUrl']) {
+      return 'url(' + this.recipeDetails['imageUrl'] + ')';
+    }
   }
 
   loadLikedUsersForRecipe(recipeId) {
