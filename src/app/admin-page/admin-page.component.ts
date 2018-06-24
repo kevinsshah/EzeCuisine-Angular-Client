@@ -38,6 +38,7 @@ export class AdminPageComponent implements OnInit {
   chefCurrentPage = 1;
   chefFirstPage = 1;
   chefLastPage = 0;
+  currentUser: User = new User();
 
   loadPageChefRecipes(pageNumber) {
     this.chefCurrentPage = pageNumber;
@@ -125,7 +126,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   open(content) {
-    this.modalReference = this.modalService.open(content, { size : 'lg'});
+    this.modalReference = this.modalService.open(content, {size: 'lg'});
     this.modalReference.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -143,7 +144,7 @@ export class AdminPageComponent implements OnInit {
 
   openEditModal(content, entity) {
     event.stopPropagation();
-    if ( entity['username']) {
+    if (entity['username']) {
       this.newUser = entity;
     } else {
       this.newRecipe = entity;
@@ -157,7 +158,7 @@ export class AdminPageComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
@@ -197,7 +198,19 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newUser.role = '';
+    this.userService
+      .profile()
+      .then(user => {
+        if (user['role']) {
+          if (user['role'] === 'Admin') {
+            this.currentUser = user;
+          } else {
+            this.router.navigate(['profile']);
+          }
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
     this.loadAllUsers();
     this.loadAllRecipes();
   }
