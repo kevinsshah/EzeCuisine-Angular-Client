@@ -79,8 +79,7 @@ export class RecipeDetailsComponent implements OnInit {
   rate() {
     if (this.currentUser['username']) {
       this.alertReview = true;
-      this
-        .ratingService
+      this.ratingService
         .rate(this.recipeId, this.newRating, this.newReview)
         .then(() => this.loadRatedUsersForRecipe(this.recipeId));
     } else {
@@ -94,8 +93,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   updateRating() {
     this.alertReview = true;
-    this
-      .ratingService
+    this.ratingService
       .updateRating(this.myRatingId, this.newRating, this.newReview)
       .then(() => this.loadRatedUsersForRecipe(this.recipeId));
   }
@@ -110,16 +108,14 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   loadLikedUsersForRecipe(recipeId) {
-    this
-      .likeService
+    this.likeService
       .findLikedUsersForRecipe(recipeId)
       .then(users => this.likedUsers = users)
       .then(() => this.isLiked());
   }
 
   loadRatedUsersForRecipe(recipeId) {
-    this
-      .ratingService
+    this.ratingService
       .findRatedUsersForRecipe(recipeId)
       .then(ratings => {
         this.myRatings = ratings
@@ -198,8 +194,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this
-      .userService
+    this.userService
       .profile()
       .then(response => {
         this.currentUser = response;

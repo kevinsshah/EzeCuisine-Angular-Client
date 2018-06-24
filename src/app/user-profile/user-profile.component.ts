@@ -100,26 +100,32 @@ export class UserProfileComponent implements OnInit {
   }
 
   navigate(searchText) {
-    this.router.navigate(['search/' + searchText]);
+    this.router
+      .navigate(['search/' + searchText]);
   }
 
   navigateToRecipe(likedRecipe) {
     if (likedRecipe.recipe.yummlyId) {
-      this.router.navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
+      this.router
+        .navigate(['search/' + likedRecipe.recipe.name + '/' + likedRecipe.recipe.yummlyId]);
     } else {
-      this.router.navigate(['search/' + likedRecipe.recipe.name + '/eze-cuisine-' + likedRecipe.recipe._id]);
+      this.router
+        .navigate(['search/' + likedRecipe.recipe.name + '/eze-cuisine-' + likedRecipe.recipe._id]);
     }  }
 
   navigateToEzeRecipe(createdRecipe) {
-    this.router.navigate(['search/' + createdRecipe.name + '/eze-cuisine-' + createdRecipe._id]);
+    this.router
+      .navigate(['search/' + createdRecipe.name + '/eze-cuisine-' + createdRecipe._id]);
   }
 
   navigateToFollowerProfile(follower) {
-    this.router.navigate(['profile/' + follower.from.username]);
+    this.router
+      .navigate(['profile/' + follower.from.username]);
   }
 
   navigateToFollowingProfile(following) {
-    this.router.navigate(['profile/' + following.to.username]);
+    this.router
+      .navigate(['profile/' + following.to.username]);
   }
 
   loadLikedRecipesForUser() {
