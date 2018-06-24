@@ -68,10 +68,6 @@ export class AdminPageComponent implements OnInit {
       });
   }
 
-  createRecipe() {
-
-  }
-
   deleteRecipe(recipe) {
     event.stopPropagation();
     this.recipeService
