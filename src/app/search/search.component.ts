@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  navigate(yummlyId) {
+  navigateYum(yummlyId) {
     this.router.navigate(['search/' + this.searchText + '/' + yummlyId]);
   }
 

@@ -4,7 +4,7 @@
   <div>
     <ul class="list-group wbdv-project">
       <li *ngFor="let result of yummlyResults"
-          (click)="navigate(result.id)"
+          (click)="navigateYum(result.id)"
           class="list-group-item wbdv-group-item">
         <img alt=" "
              *ngIf="result.smallImageUrls"
