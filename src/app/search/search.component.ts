@@ -32,23 +32,6 @@ export class SearchComponent implements OnInit {
     this.searchRecipes(this.searchText, 1);
   }
 
-  mergeResults() {
-    const n2 = this.yummlyResults.length;
-    const n1 = this.ezeCuisineResults.length;
-    let i = 0, j = 0, z = 0;
-    const results = [];
-    while (i < n1 && j < n2) {
-      results.push(this.ezeCuisineResults[i]);
-      i += 1;
-      z = 0;
-      while (z < 5 && j < n2) {
-        results.push(this.yummlyResults);
-        j += 1;
-        z += 1;
-      }
-    }
-  }
-
   searchRecipes(input, pageNumber) {
     this.currentPage = pageNumber;
     const query = input.replace('%20', '+');
@@ -62,7 +45,6 @@ export class SearchComponent implements OnInit {
       })
       .then(recipes => {
         this.ezeCuisineResults = recipes;
-        // this.mergeResults();
       });
   }
 

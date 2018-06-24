@@ -20,6 +20,7 @@
        id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     </ul>
+
     <div class="form-inline my-2 my-lg-0">
       <input class="form-control wbdv-navbar-search"
              [(ngModel)]="searchText"
@@ -31,6 +32,7 @@
         <span class="fa fa-search"></span>
       </button>
     </div>
+
     <div class="form-inline my-2 my-lg-0"
          *ngIf="!currentUser['username']">
       <a routerLink="/login">
@@ -40,6 +42,7 @@
         </button>
       </a>
     </div>
+
     <div class="form-inline my-2 my-lg-0"
          *ngIf="!currentUser['username']">
       <a routerLink="/register">
@@ -49,6 +52,7 @@
         </button>
       </a>
     </div>
+
     <div class="form-inline my-2 my-lg-0"
          *ngIf="currentUser['username']">
       <h3 class="navbar-brand float-right">

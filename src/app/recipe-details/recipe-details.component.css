@@ -22,7 +22,9 @@
 }
 
 .wbdv-recipe-summary-item .value {
-  font-family: Helvetica Neue, Roboto Thin, Roboto Light, Roboto, HelveticaNeue Light, Helvetica Neue Light, Segoe UI, sans-serif;
+  font-family: Helvetica Neue, Roboto Thin,
+               Roboto Light, Roboto, HelveticaNeue Light,
+               Helvetica Neue Light, Segoe UI, sans-serif;
   font-weight: 100;
   font-size: 2.25em;
   color: #e16120;
@@ -152,7 +154,6 @@ img {
   width: 360px;
   height: 360px;
 }
-
 
 .recipe-details.has-image {
   padding-top: 80px;

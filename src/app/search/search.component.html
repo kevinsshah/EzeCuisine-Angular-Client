@@ -18,14 +18,14 @@
        *ngIf="yummlyResults.length > 0">
     <button type="button"
             (click)="searchRecipes(searchText, currentPage - 1)"
-            [ngClass]="{'disabled':currentPage == firstPage}"
+            *ngIf="currentPage !== firstPage"
             class="btn btn-primary wbdv-pagination-button">
       Previous
     </button>
     Page {{currentPage}} of {{lastPage}}
     <button type="button"
             (click)="searchRecipes(searchText, currentPage + 1)"
-            [ngClass]="{'disabled':currentPage == lastPage}"
+            *ngIf="currentPage !== lastPage"
             class="btn btn-primary wbdv-pagination-button">
       Next
     </button>

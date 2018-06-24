@@ -129,11 +129,13 @@ export class ProfileComponent implements OnInit {
 
   open(content) {
     this.modalReference = this.modalService.open(content, { size : 'lg'});
-    this.modalReference.result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalReference
+      .result
+      .then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
   }
 
   openAddModal(content) {
