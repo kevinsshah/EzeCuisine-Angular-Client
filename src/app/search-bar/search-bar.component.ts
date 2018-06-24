@@ -18,6 +18,7 @@ export class SearchBarComponent implements OnInit {
 
   searchText = '';
   currentUser: User = new User();
+  isCollapsed = true;
 
   ngOnInit() {
     this
