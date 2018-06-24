@@ -1,9 +1,13 @@
-.wbdv-top-bottom-container {
-  margin-bottom: 50px;
+.wbdv-top-container {
   padding-top: 60px;
 }
 
-.wbdv-top-bottom-container .card {
+.wbdv-bottom-container {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.wbdv-bottom-container .card {
   cursor: pointer;
 }
 

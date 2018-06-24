@@ -1,6 +1,6 @@
 <app-search-bar></app-search-bar>
 
-<div class="wbdv-top-bottom-container">
+<div class="wbdv-top-container">
 
   <mdb-carousel [interval]="4000"
                 [isControls]="true"
@@ -26,13 +26,13 @@
 
 </div>
 
-<div class="container wbdv-top-bottom-container">
+<div class="container wbdv-bottom-container">
   <div class="card-columns">
     <div class="card"
          *ngFor="let dish of dishes"
          (click)="navigate(dish.id, dish.recipeName)">
       <img class="card-img-top"
-           src="{{dish.imageUrlsBySize[90]}}">
+           src="{{dish.imageUrl}}">
       <div class="card-body">
         <h5 class="card-title">{{dish.recipeName}}</h5>
         <p class="card-text">{{dish.sourceDisplayName}}</p>
