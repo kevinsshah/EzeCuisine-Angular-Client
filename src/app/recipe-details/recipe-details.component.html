@@ -1,30 +1,35 @@
 <app-search-bar></app-search-bar>
 
-<div class="row" style="padding-top: 80px;">
-  <div class="col-5">
-    <div class="wbdv-image-wrap">
-      <img alt="Image not available"
-           *ngIf="recipeDetails['imageUrl']"
-           src="{{recipeDetails['imageUrl']}}">
-      <button class="btn wbdv-like-button"
-              *ngIf="!(currentUser.username) || !isRecipeLiked && currentUser.role !== 'Admin'"
-              (click)="like()">
-        <i class="fa fa-heart-o wbdv-like-icon"></i>
-      </button>
-      <button class="btn wbdv-liked-button"
-              *ngIf="isRecipeLiked && currentUser.role !== 'Admin'"
-              (click)="unlike()">
-        <i class="fa fa-heart wbdv-liked-icon"></i>
-      </button>
+
+<div class="recipe-details has-image"
+     [ngStyle]="{'background-image': getImageUrl()}">
+  <div class="container wbdv-recipe-details-top">
+    <div class="row">
+      <div class="col-lg-5 col-sm-12 text-center">
+        <div class="wbdv-image-wrap">
+          <img alt="Image not available"
+               *ngIf="recipeDetails['imageUrl']"
+               src="{{recipeDetails['imageUrl']}}">
+          <button class="btn wbdv-like-button"
+                  *ngIf="!(currentUser.username) || !isRecipeLiked && currentUser.role !== 'Admin'"
+                  (click)="like()">
+            <i class="fa fa-heart-o wbdv-like-icon"></i>
+          </button>
+          <button class="btn wbdv-liked-button"
+                  *ngIf="isRecipeLiked && currentUser.role !== 'Admin'"
+                  (click)="unlike()">
+            <i class="fa fa-heart wbdv-liked-icon"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-7 col-sm-12  text-center">
+        <h1>{{recipeDetails['name']}}</h1>
+      </div>
     </div>
-  </div>
-  <div class="col-7 text-center">
-    <h1>{{recipeDetails['name']}}</h1>
   </div>
 </div>
 
 <div class="container">
-
   <div class="wbdv-recipe-summary">
     <div class="wbdv-recipe-summary-item">
       <span class="value">{{ingredientsCount}}</span>

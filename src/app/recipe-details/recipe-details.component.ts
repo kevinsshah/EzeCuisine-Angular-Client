@@ -103,7 +103,10 @@ export class RecipeDetailsComponent implements OnInit {
   setRecipeId(params) {
     this.yummlyId = params['recipeId'];
     this.findRecipeById(this.yummlyId);
+  }
 
+  getImageUrl() {
+    return 'url(' + this.recipeDetails['imageUrl'] + ')';
   }
 
   loadLikedUsersForRecipe(recipeId) {

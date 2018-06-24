@@ -37,9 +37,6 @@
 .wbdv-image-wrap {
   display: inline-block;
   position: relative;
-  margin-left: 75px;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .wbdv-like-button {
@@ -156,16 +153,43 @@ img {
   height: 360px;
 }
 
-.bg {
 
-  /* The image used */
-  background-image: url("https://pfe-getold.s3.amazonaws.com/basic_article/heart-disease-prevention-strategies-to-help-protect-your-heart-1600x700.jpg?Nj9cu9QbjI3OfuX2w70QqwhK08bIcXn4");
+.recipe-details.has-image {
+  padding-top: 80px;
+}
 
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
+.recipe-details {
+  background: #363636;
+  background-position: 50% 50%;
   background-size: cover;
+  position: relative;
+  transition: all .6s ease;
+}
+
+.recipe-details:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: background-color .6s ease;
+}
+.col-lg-5.col-sm-12.text-center {
+  margin-bottom: 20px;
+}
+.col-lg-7.col-sm-12.text-center {
+  color: #f3f3f3;
 }
