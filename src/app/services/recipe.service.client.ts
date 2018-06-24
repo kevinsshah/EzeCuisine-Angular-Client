@@ -3,7 +3,7 @@ export class RecipeServiceClient {
   LOCAL_URL = 'http://localhost:4000';
   REMOTE_URL = 'https://eze-cuisine-nodejs-server.herokuapp.com';
 
-  VARIABLE_URL = this.LOCAL_URL;
+  VARIABLE_URL = this.REMOTE_URL;
 
   RECIPE_URL = this.VARIABLE_URL + '/api/recipe';
   CURRENT_USER_CREATED_RECIPE_URL = this.VARIABLE_URL + '/api/user/createdRecipe';

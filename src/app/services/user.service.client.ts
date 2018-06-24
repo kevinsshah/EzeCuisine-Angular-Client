@@ -3,7 +3,7 @@ export class UserServiceClient {
   LOCAL_URL = 'http://localhost:4000';
   REMOTE_URL = 'https://eze-cuisine-nodejs-server.herokuapp.com';
 
-  VARIABLE_URL = this.LOCAL_URL;
+  VARIABLE_URL = this.REMOTE_URL;
 
   USER_URL = this.VARIABLE_URL + '/api/user';
   ADMIN_USER_URL = this.VARIABLE_URL + '/api/admin/user';
