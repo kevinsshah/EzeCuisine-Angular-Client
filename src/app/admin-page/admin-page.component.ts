@@ -24,12 +24,24 @@ export class AdminPageComponent implements OnInit {
   customers: User[] = [];
   chefSpecials: Recipe[] = [];
   yummlySpecials: Recipe[] = [];
+  allYummlySpecials: Recipe[] = [];
   selection = 'Manage Users';
   newRecipe: Recipe = new Recipe();
   newUser: User = new User();
   modalReference: NgbModalRef;
   closeResult: string;
   alertUsername = false;
+  currentPage = 1;
+  firstPage = 1;
+  lastPage = 0;
+
+  loadPageRecipes(pageNumber) {
+    this.currentPage = pageNumber;
+    const startIndex = (pageNumber - 1) * 10;
+    this.yummlySpecials = this.allYummlySpecials.slice(
+      startIndex, startIndex + 10
+    );
+  }
 
   deleteUser(user) {
     event.stopPropagation();
@@ -163,8 +175,10 @@ export class AdminPageComponent implements OnInit {
         const allRecipes = recipes;
         this.chefSpecials = allRecipes
           .filter(recipe => recipe['createdBy']);
-        this.yummlySpecials = allRecipes
+        this.allYummlySpecials = allRecipes
           .filter(recipe => !recipe['createdBy']);
+        this.lastPage = Math.ceil(this.allYummlySpecials.length / 10);
+        this.loadPageRecipes(this.firstPage);
       });
   }
 
