@@ -289,6 +289,22 @@
             </button>
           </li>
         </ul>
+        <div class="wbdv-pagination-component"
+             *ngIf="chefSpecials.length > 0">
+          <button type="button"
+                  *ngIf="chefCurrentPage !== chefFirstPage"
+                  (click)="loadPageChefRecipes(chefCurrentPage - 1)"
+                  class="btn btn-primary wbdv-pagination-button">
+            Previous
+          </button>
+          Page {{chefCurrentPage}} of {{chefLastPage}}
+          <button type="button"
+                  *ngIf="chefCurrentPage !== chefLastPage"
+                  (click)="loadPageChefRecipes(chefCurrentPage + 1)"
+                  class="btn btn-primary wbdv-pagination-button">
+            Next
+          </button>
+        </div>
       </div>
 
       <div class="col-lg-6 col-sm-12">
@@ -306,15 +322,15 @@
         <div class="wbdv-pagination-component"
              *ngIf="yummlySpecials.length > 0">
           <button type="button"
-                  (click)="loadPageRecipes(currentPage - 1)"
-                  [ngClass]="{'disabled':currentPage == firstPage}"
+                  *ngIf="yummlyCurrentPage !== yummlyFirstPage"
+                  (click)="loadPageYummlyRecipes(yummlyCurrentPage - 1)"
                   class="btn btn-primary wbdv-pagination-button">
             Previous
           </button>
-          Page {{currentPage}} of {{lastPage}}
+          Page {{yummlyCurrentPage}} of {{yummlyLastPage}}
           <button type="button"
-                  (click)="loadPageRecipes(currentPage + 1)"
-                  [ngClass]="{'disabled':currentPage == lastPage}"
+                  *ngIf="yummlyCurrentPage !== yummlyLastPage"
+                  (click)="loadPageYummlyRecipes(yummlyCurrentPage + 1)"
                   class="btn btn-primary wbdv-pagination-button">
             Next
           </button>

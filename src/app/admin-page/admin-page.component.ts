@@ -22,6 +22,7 @@ export class AdminPageComponent implements OnInit {
   chefs: User[] = [];
   critics: User[] = [];
   customers: User[] = [];
+  allChefSpecials: Recipe[] = [];
   chefSpecials: Recipe[] = [];
   yummlySpecials: Recipe[] = [];
   allYummlySpecials: Recipe[] = [];
@@ -31,12 +32,23 @@ export class AdminPageComponent implements OnInit {
   modalReference: NgbModalRef;
   closeResult: string;
   alertUsername = false;
-  currentPage = 1;
-  firstPage = 1;
-  lastPage = 0;
+  yummlyCurrentPage = 1;
+  yummlyFirstPage = 1;
+  yummlyLastPage = 0;
+  chefCurrentPage = 1;
+  chefFirstPage = 1;
+  chefLastPage = 0;
 
-  loadPageRecipes(pageNumber) {
-    this.currentPage = pageNumber;
+  loadPageChefRecipes(pageNumber) {
+    this.chefCurrentPage = pageNumber;
+    const startIndex = (pageNumber - 1) * 10;
+    this.chefSpecials = this.allChefSpecials.slice(
+      startIndex, startIndex + 10
+    );
+  }
+
+  loadPageYummlyRecipes(pageNumber) {
+    this.yummlyCurrentPage = pageNumber;
     const startIndex = (pageNumber - 1) * 10;
     this.yummlySpecials = this.allYummlySpecials.slice(
       startIndex, startIndex + 10
@@ -173,12 +185,14 @@ export class AdminPageComponent implements OnInit {
       .findAllRecipes()
       .then(recipes => {
         const allRecipes = recipes;
-        this.chefSpecials = allRecipes
+        this.allChefSpecials = allRecipes
           .filter(recipe => recipe['createdBy']);
+        this.chefLastPage = Math.ceil(this.allChefSpecials.length / 10);
+        this.loadPageChefRecipes(this.chefFirstPage);
         this.allYummlySpecials = allRecipes
           .filter(recipe => !recipe['createdBy']);
-        this.lastPage = Math.ceil(this.allYummlySpecials.length / 10);
-        this.loadPageRecipes(this.firstPage);
+        this.yummlyLastPage = Math.ceil(this.allYummlySpecials.length / 10);
+        this.loadPageYummlyRecipes(this.yummlyFirstPage);
       });
   }
 
