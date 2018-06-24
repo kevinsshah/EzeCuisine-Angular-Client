@@ -1,61 +1,7 @@
-<!--<nav class="navbar navbar-dark bg-dark justify-content-between row">-->
-  <!--<div class="col-2">-->
-    <!--<h3 class="navbar-brand">-->
-      <!--{{user.username}}-->
-    <!--</h3>-->
-  <!--</div>-->
-
-  <!--<div class="col-7">-->
-    <!--<div class="row">-->
-      <!--<div class="col-11 wbdv-search-input">-->
-        <!--<input class="form-control"-->
-               <!--[(ngModel)]="searchText"-->
-               <!--(keyup.enter)="navigate(searchText)"-->
-               <!--placeholder="Search for recipes"/>-->
-      <!--</div>-->
-      <!--<button type="button"-->
-              <!--(click)="navigate(searchText)"-->
-              <!--class="btn btn-dark wbdv-search-button">-->
-        <!--<span class="fa fa-search"></span>-->
-      <!--</button>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div class="col-3">-->
-  <!--<form class="form-inline float-right">-->
-    <!--<a routerLink="/home">-->
-      <!--<button class="btn btn-outline-light my-2 my-sm-0"-->
-              <!--type="button">-->
-        <!--Home-->
-      <!--</button>-->
-    <!--</a>-->
-    <!--<div *ngIf="!currentUser['username']">-->
-      <!--<a routerLink="/register">-->
-        <!--<button class="btn btn-outline-light my-2 my-sm-0 float-right"-->
-                <!--type="button">-->
-          <!--Register-->
-        <!--</button>-->
-      <!--</a>-->
-      <!--<a routerLink="/login">-->
-        <!--<button class="btn btn-outline-light my-2 my-sm-0 float-right"-->
-                <!--type="button">-->
-          <!--Login-->
-        <!--</button>-->
-      <!--</a>-->
-    <!--</div>-->
-    <!--<div *ngIf="currentUser['username']">-->
-      <!--<h3 class="navbar-brand float-right wbdv-username">-->
-        <!--<div (click)="goToProfile()">-->
-          <!--{{currentUser['username']}}-->
-          <!--<i class="fa fa-lg fa-user-circle-o"></i>-->
-        <!--</div>-->
-      <!--</h3>-->
-    <!--</div>-->
-  <!--</form>-->
-  <!--</div>-->
-<!--</nav>-->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <h3 class="navbar-brand">
+    {{user.username}}
+  </h3>
   <button class="navbar-toggler"
           type="button"
           data-toggle="collapse"

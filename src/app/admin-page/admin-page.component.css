@@ -44,6 +44,10 @@
   margin-right: 5px;
 }
 
+.list-group {
+  margin-bottom: 15px;
+}
+
 .btn.btn-danger.fa.fa-trash {
   margin-right: 5px;
 }
