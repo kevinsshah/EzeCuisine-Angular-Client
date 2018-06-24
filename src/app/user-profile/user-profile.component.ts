@@ -39,6 +39,7 @@ export class UserProfileComponent implements OnInit {
   isUserFollowed = false;
   createdRecipes: Recipe[] = [];
   searchText = '';
+  isCollapsed = true;
 
   follow() {
     if (this.currentUser['username']) {

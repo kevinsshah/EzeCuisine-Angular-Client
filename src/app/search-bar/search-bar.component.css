@@ -3,16 +3,10 @@
   margin-bottom: 50px;
 }
 
-/*.navbar {*/
-  /*position: fixed;*/
-  /*top: 0px;*/
-  /*width: 100%;*/
-  /*z-index: 2;*/
-/*}*/
-
 .wbdv-navbar .navbar-brand {
   cursor: pointer;
 }
+
 
 .btn.btn-outline-light {
   margin-right: 5px;

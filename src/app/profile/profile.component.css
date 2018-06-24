@@ -10,7 +10,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   width: 90%;
-  padding-top: 80px;
+  padding-top: 50px;
 }
 
 .wbdv-nav {
@@ -94,4 +94,8 @@
 
 .col-11.wbdv-search-input {
   padding-right: 0px;
+}
+
+.btn.btn-dark {
+  margin-right: 15px;
 }

@@ -11,6 +11,10 @@
   margin-right: 5px;
 }
 
+.btn.btn-dark {
+  margin-right: 15px;
+}
+
 .btn.btn-success.wbdv-follow {
   margin-left: 15px;
 }

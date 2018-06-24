@@ -1,48 +1,59 @@
-<nav class="navbar navbar-dark bg-dark justify-content-between fixed-top row">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <h3 class="navbar-brand">
+    Profile
+  </h3>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="col-2">
-    <h3 class="navbar-brand">
-      Profile
-    </h3>
-  </div>
-
-  <div class="col-7">
-    <div class="row">
-      <div class="col-11 wbdv-search-input">
-        <input class="form-control"
-               [(ngModel)]="searchText"
-               (keyup.enter)="navigate(searchText)"
-               placeholder="Search for recipes"/>
-      </div>
+  <div class="collapse navbar-collapse"
+       [ngbCollapse]="isCollapsed"
+       id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <input class="form-control wbdv-navbar-search"
+             [(ngModel)]="searchText"
+             (keyup.enter)="navigate(searchText)"
+             placeholder="Search for recipes"/>
       <button type="button"
               (click)="navigate(searchText)"
               class="btn btn-dark wbdv-search-button">
         <span class="fa fa-search"></span>
       </button>
     </div>
-  </div>
-
-  <div class="col-3">
-    <form class="form-inline float-right">
+    <div class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-light my-2 my-sm-0"
               (click)="logout()"
               type="button">
         Logout
       </button>
+    </div>
+    <div class="form-inline my-2 my-lg-0">
       <a routerLink="/home">
         <button class="btn btn-outline-light my-2 my-sm-0"
                 type="button">
           Home
         </button>
       </a>
+    </div>
+    <div class="form-inline my-2 my-lg-0"
+         *ngIf="user['role'] === 'Admin'">
       <a routerLink="/admin">
-      <button class="btn btn-outline-light my-2 my-sm-0"
-      *ngIf="user['role'] === 'Admin'"
-      type="button">
-      Admin Page
-      </button>
+        <button class="btn btn-outline-light my-2 my-sm-0"
+                type="button">
+          Admin Page
+        </button>
       </a>
-    </form>
+    </div>
   </div>
 </nav>
 

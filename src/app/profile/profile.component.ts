@@ -40,6 +40,7 @@ export class ProfileComponent implements OnInit {
   closeResult: string;
   modalReference: NgbModalRef;
   searchText = '';
+  isCollapsed = true;
 
   logout() {
     this.userService
