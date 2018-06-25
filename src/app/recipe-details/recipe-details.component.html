@@ -23,6 +23,9 @@
       </div>
       <div class="col-lg-7 col-sm-12  text-center">
         <h1>{{recipeDetails['name']}}</h1>
+        <br>
+        <h3 *ngIf="likedUsers.length === 1">{{likedUsers.length}} Like</h3>
+        <h3 *ngIf="likedUsers.length > 1">{{likedUsers.length}} Likes</h3>
       </div>
     </div>
   </div>
