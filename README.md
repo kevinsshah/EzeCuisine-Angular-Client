@@ -1,3 +1,7 @@
-# Team-2000-Angular-Client
+# EzeCuisine-Angular-Client
 
-Node.js app code present [here](https://github.com/kevinsshah/Team-2000-Nodejs-Server.git)
+This repository is an angular client for the EzeCuisine project located [here](https://github.com/parshva45/EzeCuisine-Webdev-Project).
+
+The website is hosted [here](https://eze-cuisine-angular-client.herokuapp.com).
+
+The repository of Nodejs Server for EzeCuisine can be found [here](https://github.com/parshva45/EzeCuisine-Nodejs-Server).
